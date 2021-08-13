@@ -1,35 +1,35 @@
 import React, {Component} from 'react';
-import news from "./childComponents/news";
-import {Route} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import {TabBar} from 'antd-mobile';
 import "./home.scss"
-import index from "../index";
-import list from "../list/list";
-import profile from "../profile/profile";
+import Index from "./childComponents/Index/Index";
+import List from "./childComponents/List/List";
+import News from "./childComponents/News/News";
+import Profile from "./childComponents/Profile/Profile";
 
 const tabItems = [
     {
         title: "首页",
         icon: "icon-shouye2",
-        path: "/home/index",
+        path: "/home",
     },
     {
         title: "找房",
         icon: "icon-zhaofang",
-        path: "/home/list",
+        path: "/home/List",
     },
     {
         title: "资讯",
         icon: "icon-zixun",
-        path: "/home/news",
+        path: "/home/News",
     },
     {
         title: "我的",
         icon: "icon-wode1",
-        path: "/home/profile",
+        path: "/home/Profile",
     },
 ]
-export default class home extends Component {
+export default class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -62,20 +62,20 @@ export default class home extends Component {
         console.log(this.props.location.pathname)
         return (
             <div className={"home"}>
-                <Route path={"/home/news"} component={news}/>
-                <Route path={"/home/index"} component={index}/>
-                <Route path={"/home/list"} component={list}/>
-                <Route path={"/home/profile"} component={profile}/>
+
+                <Route exact path={"/home"} component={Index}/>
+                <Route path={"/home/News"} component={News}/>
+                <Route path={"/home/List"} component={List}/>
+                <Route path={"/home/Profile"} component={Profile}/>
+
 
                 {/*tabBar*/}
-
                 <TabBar
                     tintColor="#21ba7a"
                     barTintColor="white"
                     hidden={this.state.hidden}
                     noRenderContent
                 >
-
                     {
                         this.renderTabBarItem()
                     }
