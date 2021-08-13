@@ -7,6 +7,28 @@ import index from "../index";
 import list from "../list/list";
 import profile from "../profile/profile";
 
+const tabItems = [
+    {
+        title: "首页",
+        icon: "icon-shouye2",
+        path: "/home/index",
+    },
+    {
+        title: "找房",
+        icon: "icon-zhaofang",
+        path: "/home/list",
+    },
+    {
+        title: "资讯",
+        icon: "icon-zixun",
+        path: "/home/news",
+    },
+    {
+        title: "我的",
+        icon: "icon-wode1",
+        path: "/home/profile",
+    },
+]
 export default class home extends Component {
     constructor(props) {
         super(props);
@@ -15,6 +37,26 @@ export default class home extends Component {
         };
     }
 
+    renderTabBarItem() {
+        return tabItems.map(item => <TabBar.Item
+            title={item.title}
+            key={item.title}
+            icon={
+                <i className={`iconfont ${item.icon}`}/>
+            }
+            selectedIcon={
+                <i className={`iconfont ${item.icon}`}/>
+            }
+            selected={this.state.selectedTab === item.path}
+            onPress={() => {
+                this.setState({
+                    selectedTab: item.path,
+                });
+                //    路由切换
+                this.props.history.push(item.path)
+            }}
+        />)
+    }
 
     render() {
         console.log(this.props.location.pathname)
@@ -33,85 +75,10 @@ export default class home extends Component {
                     hidden={this.state.hidden}
                     noRenderContent
                 >
-                    <TabBar.Item
-                        title="首页"
-                        key="Life"
-                        icon={
-                            <i className={'iconfont icon-shouye2'}></i>
-                        }
-                        selectedIcon={
-                            <i className={'iconfont icon-shouye2 selected'}></i>
-                        }
-                        selected={this.state.selectedTab === '/home/index'}
-                        onPress={() => {
-                            this.setState({
-                                selectedTab: '/home/index',
-                            });
-                            //    路由切换
-                            this.props.history.push('/home/index')
-                        }}
-                        data-seed="logId"
-                    >
 
-                    </TabBar.Item>
-                    <TabBar.Item
-                        icon={
-                            <i className={'iconfont icon-zhaofang'}></i>
-                        }
-                        selectedIcon={
-                            <i className={'iconfont icon-zhaofang selected'}></i>
-                        }
-                        title="找房"
-                        key="Koubei"
-                        selected={this.state.selectedTab === '/home/list'}
-                        onPress={() => {
-                            this.setState({
-                                selectedTab: '/home/list',
-                            });
-                            //    路由切换
-                            this.props.history.push('/home/list')
-                        }}
-                        data-seed="logId1"
-                    >
-                    </TabBar.Item>
-                    <TabBar.Item
-                        icon={
-                            <i className={'iconfont icon-zixun'}></i>
-                        }
-                        selectedIcon={
-                            <i className={'iconfont icon-zixun selected'}></i>
-                        }
-                        title="资讯"
-                        key="Friend"
-                        selected={this.state.selectedTab === '/home/news'}
-                        onPress={() => {
-                            this.setState({
-                                selectedTab: '/home/news',
-                            });
-                            //    路由切换
-                            this.props.history.push('/home/news')
-                        }}
-                    >
-                    </TabBar.Item>
-                    <TabBar.Item
-                        icon={
-                            <i className={'iconfont icon-wode1'}></i>
-                        }
-                        selectedIcon={
-                            <i className={'iconfont icon-wode1 selected'}></i>
-                        }
-                        title="我的"
-                        key="my"
-                        selected={this.state.selectedTab === '/home/profile'}
-                        onPress={() => {
-                            this.setState({
-                                selectedTab: '/home/profile',
-                            });
-                            //    路由切换
-                            this.props.history.push('/home/profile')
-                        }}
-                    >
-                    </TabBar.Item>
+                    {
+                        this.renderTabBarItem()
+                    }
                 </TabBar>
 
 
