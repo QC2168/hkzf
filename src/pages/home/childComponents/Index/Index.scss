@@ -1,18 +1,87 @@
-.slick-list, .slick-track { touch-action:pan-y; }
-.nav .am-flexbox-item{
+.slick-list, .slick-track {
+  touch-action: pan-y;
+}
+
+.nav .am-flexbox-item {
   text-align: center;
 }
-.swiper{
+
+.swiper {
   height: 212px;
 }
-.nav{
+
+.nav {
   padding: 10px 0;
-  img{
+
+  img {
     width: 48px;
   }
-  h2{
+
+  h2 {
     font-size: 13px;
     font-weight: normal;
     margin: 7px 0 0 0;
   }
 }
+
+// 租房小组
+.group {
+  background: #f6f5f6;
+  overflow: hidden;
+  padding: 0 10px;
+.group-item{
+  height: 75px;
+  .desc {
+    .title {
+      font-weight: bold;
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .info {
+      font-size: 12px;
+      color: #999;
+    }
+  }
+  img {
+    width: 55px;
+  }
+
+}
+  .group-title {
+    position: relative;
+    margin: 15px 0 15px 10px;
+    font-size: 15px;
+
+    .more {
+      color: #787d82;
+      position: absolute;
+      right: 0;
+      font-size: 14px;
+      font-weight: normal;
+    }
+  }
+  .am-grid .am-flexbox {
+    background: inherit;
+    .am-flexbox-item .am-grid-item-content{
+padding: 0 5px 0 0;
+    }
+  }
+  .am-flexbox-align-stretch {
+    margin-bottom: 10px;
+
+    .am-grid-item {
+      background-color: #fff;
+
+      &:first-child {
+        margin-right: 10px;
+      }
+    }
+
+
+  }
+
+}
+
+
+

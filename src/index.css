@@ -1,10 +1,13 @@
 html, body {
     height: 100%;
-    font-family: "Microsoft YaHei";
     color: #333;
     background-color: #fff;
 }
 
 * {
     box-sizing: border-box;
+}
+
+h2,p{
+    margin: 0;
 }

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Carousel, Flex} from 'antd-mobile';
+import {Carousel, Flex, Grid} from 'antd-mobile';
 import axios from "axios";
 import "./Index.scss"
 import Nav1 from "assets/images/nav-1.png"
@@ -39,11 +39,14 @@ export default class Index extends Component {
         super(props);
         this.state = {
             swiperData: [],
+            // 租房小组
+            groups: []
         };
     }
 
-    componentDidMount() {
+    UNSAFE_componentWillMount() {
         this.getSwiperData()
+        this.getGroups()
 
     }
 
@@ -52,7 +55,17 @@ export default class Index extends Component {
         this.setState({
             swiperData: res.data.body,
         })
+    }
 
+    async getGroups() {
+        const res = await axios.get('http://127.0.0.1:8009/home/groups', {
+            params: {
+                area: 'AREA%7C88cff55c-aaa4-e2e0'
+            }
+        })
+        this.setState({
+            groups: res.data.body
+        })
     }
 
     // 渲染轮播图
@@ -87,7 +100,7 @@ export default class Index extends Component {
             <div className={"Index"}>
                 {/*轮播图*/}
                 <div className="swiper">
-                    {this.state.swiperData.length>0 ? (<Carousel
+                    {this.state.swiperData.length > 0 ? (<Carousel
                         autoplay
                         infinite
                     >
@@ -101,8 +114,27 @@ export default class Index extends Component {
                     {
                         this.renderNavs()
                     }
-
                 </Flex>
+
+                {/*    租房小组*/}
+                <div className="group">
+                    <h3 className="group-title">
+                        租房小组
+                        <span className={"more"}>更多</span>
+                    </h3>
+                    <Grid data={this.state.groups} columnNum={2} hasLine={false} square={false} renderItem={(item) =>
+                        <Flex className={"group-item"} justify={"around"} key={item.id}>
+                            <div className="desc">
+                                <p className="title">{item.title}</p>
+                                <span className={"info"}>
+                                   {item.desc}
+                                </span>
+                            </div>
+                            <img src={`http://127.0.0.1:8009${item.imgSrc}`} alt=""/>
+                        </Flex>
+                    }>
+                    </Grid>
+                </div>
             </div>
         )
     }
