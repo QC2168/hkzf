@@ -7,8 +7,8 @@ import './index.css'
 //导入字体
 import 'assets/font/iconfont.css'
 ReactDOM.render(
-    <React.StrictMode>
-        <App/>
-    </React.StrictMode>,
+    // <React.StrictMode>
+        <App/>,
+    // </React.StrictMode>,
     document.getElementById('root')
 )

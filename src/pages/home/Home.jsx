@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route, Switch} from "react-router-dom";
+import {Route} from "react-router-dom";
 import {TabBar} from 'antd-mobile';
 import "./home.scss"
 import Index from "./childComponents/Index/Index";
@@ -59,14 +59,16 @@ export default class Home extends Component {
     }
 
     render() {
-        console.log(this.props.location.pathname)
         return (
             <div className={"home"}>
-
                 <Route exact path={"/home"} component={Index}/>
                 <Route path={"/home/News"} component={News}/>
                 <Route path={"/home/List"} component={List}/>
                 <Route path={"/home/Profile"} component={Profile}/>
+
+
+
+
 
 
                 {/*tabBar*/}
@@ -80,8 +82,6 @@ export default class Home extends Component {
                         this.renderTabBarItem()
                     }
                 </TabBar>
-
-
             </div>
 
         )

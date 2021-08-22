@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css'
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
 // 导入页面组件
-import Home from "./pages/Home/Home";
+import Home from "./pages/home/Home";
 import CityList from "./pages/CityList/CityList";
 
 function App() {
