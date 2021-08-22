@@ -37,6 +37,15 @@ export default class Home extends Component {
         };
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.location.pathname !== this.props.location.pathname) {
+            // 路由发生切换
+            this.setState({
+                selectedTab: this.props.location.pathname
+            });
+        }
+    }
+
     renderTabBarItem() {
         return tabItems.map(item => <TabBar.Item
             title={item.title}
@@ -65,10 +74,6 @@ export default class Home extends Component {
                 <Route path={"/home/News"} component={News}/>
                 <Route path={"/home/List"} component={List}/>
                 <Route path={"/home/Profile"} component={Profile}/>
-
-
-
-
 
 
                 {/*tabBar*/}
