@@ -6,6 +6,7 @@ import Nav1 from "assets/images/nav-1.png"
 import Nav2 from "assets/images/nav-2.png"
 import Nav3 from "assets/images/nav-3.png"
 import Nav4 from "assets/images/nav-4.png"
+import {getCurrentCity} from "../../../../utils";
 
 const navs = [
     {
@@ -56,14 +57,12 @@ export default class Index extends Component {
         this.getCenterLocation()
     }
 
-    getCenterLocation() {
-        const myCity = new window.BMap.LocalCity()
-        myCity.get(async (res) => {
-            const result = await axios.get(`http://127.0.0.1:8009/area/info?name=${res.name}`)
-            this.setState({
-                curCityName: result.data.body.label
-            })
+    async getCenterLocation() {
+        const res = await getCurrentCity()
+        this.setState({
+            curCityName: res.label
         })
+
     }
 
     async getSwiperData() {
