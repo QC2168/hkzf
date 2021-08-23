@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "10237569",
+      "name": "search",
+      "font_class": "search",
+      "unicode": "e692",
+      "unicode_decimal": 59026
+    },
+    {
+      "icon_id": "18517030",
+      "name": "map",
+      "font_class": "map",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "22063187",
+      "name": "arrow-right",
+      "font_class": "arrow-bottom",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
       "icon_id": "1954010",
       "name": "找房",
       "font_class": "zhaofang",

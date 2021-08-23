@@ -3,6 +3,13 @@ html, body {
     color: #333;
     background-color: #fff;
 }
+#root,.App{
+    height: 100%;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
 
 * {
     box-sizing: border-box;

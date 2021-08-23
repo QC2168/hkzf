@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Carousel, Flex, Grid} from 'antd-mobile';
+import {Carousel, Flex, Grid, WingBlank} from 'antd-mobile';
 import axios from "axios";
 import "./Index.scss"
 import Nav1 from "assets/images/nav-1.png"
@@ -34,20 +34,36 @@ const navs = [
     },
 ]
 
+
 export default class Index extends Component {
     constructor(props) {
         super(props);
         this.state = {
             swiperData: [],
             // 租房小组
-            groups: []
+            groups: [],
+            // 新闻资讯
+            news: [],
+            // 当前城市名称
+            curCityName: '北京'
         };
     }
 
     UNSAFE_componentWillMount() {
         this.getSwiperData()
         this.getGroups()
+        this.getNews()
+        this.getCenterLocation()
+    }
 
+    getCenterLocation() {
+        const myCity = new window.BMap.LocalCity()
+        myCity.get(async (res) => {
+            const result = await axios.get(`http://127.0.0.1:8009/area/info?name=${res.name}`)
+            this.setState({
+                curCityName: result.data.body.label
+            })
+        })
     }
 
     async getSwiperData() {
@@ -65,6 +81,17 @@ export default class Index extends Component {
         })
         this.setState({
             groups: res.data.body
+        })
+    }
+
+    async getNews() {
+        const res = await axios.get('http://127.0.0.1:8009/home/news', {
+            params: {
+                area: 'AREA%7C88cff55c-aaa4-e2e0'
+            }
+        })
+        this.setState({
+            news: res.data.body
         })
     }
 
@@ -95,6 +122,12 @@ export default class Index extends Component {
             </Flex.Item>)
     }
 
+    renderNews() {
+        return (
+            <div></div>
+        )
+    }
+
     render() {
         return (
             <div className={"Index"}>
@@ -108,7 +141,20 @@ export default class Index extends Component {
                     </Carousel>) : ''}
                 </div>
 
-
+                {/*搜索*/}
+                <Flex className={"search-box"}>
+                    <Flex className={"search"}>
+                        <div className="location" onClick={() => this.props.history.push('/CityList')}>
+                            <span className={"name"}>{this.state.curCityName}</span>
+                            <i className="iconfont icon-arrow-bottom"/>
+                        </div>
+                        <div className="form" onClick={() => this.props.history.push('/search')}>
+                            <i className="iconfont icon-search"/>
+                            <span className="text">请输入小区/地址</span>
+                        </div>
+                    </Flex>
+                    <i className={"iconfont icon-map"} onClick={() => this.props.history.push('/Map')}/>
+                </Flex>
                 {/*    导航菜单*/}
                 <Flex className={"nav"}>
                     {
@@ -116,7 +162,7 @@ export default class Index extends Component {
                     }
                 </Flex>
 
-                {/*    租房小组*/}
+                {/* 租房小组 */}
                 <div className="group">
                     <h3 className="group-title">
                         租房小组
@@ -134,6 +180,16 @@ export default class Index extends Component {
                         </Flex>
                     }>
                     </Grid>
+                </div>
+
+                {/* 最新资讯 */}
+                <div className="news">
+                    <h3 className="group-title">
+                        最新资讯
+                    </h3>
+                    <WingBlank size={"md"}>
+                        {this.renderNews()}
+                    </WingBlank>
                 </div>
             </div>
         )
