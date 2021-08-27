@@ -1,29 +1,35 @@
 import React, {Component} from 'react';
+import "./Map.scss"
+import NavHeader from "../../../../components/NavHeader/NavHeader";
 
 export default class Map extends Component {
     constructor(props) {
         super(props);
         this.state = {};
     }
+
     componentDidMount() {
+        console.log(BMap)
         // 初始化地图实例
         // react脚手架中全局对象需要使用window来访问
-        const map = new window.BMap.Map("container");
-    //
+        //
         // 获取地理位置信息
         navigator.geolocation.getCurrentPosition((position => {
-            console.log(position.coords.latitude)
-            console.log(position.coords.longitude)
-            const point = new window.BMap.Point(position.coords.latitude, position.coords.longitude);
-            map.centerAndZoom(point,15)
+            const map = new BMap.Map("container");
+            const latitude = position.coords.latitude
+            const longitude = position.coords.longitude
+            console.log(latitude, longitude)
+            map.centerAndZoom((new BMap.Point(longitude, latitude)), 15);
+            map.enableScrollWheelZoom(true)
         }))
 
     }
 
     render() {
         return (
-            <div className={"Map"}>
-                <div className="container">
+            <div className="Map">
+                <NavHeader>地址找房</NavHeader>
+                <div id="container">
 
                 </div>
             </div>

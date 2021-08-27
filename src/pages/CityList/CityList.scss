@@ -1,12 +1,42 @@
 .CityList {
+  height: 100%;
+  padding-top: 45px;
+
   .navBar {
-    color:#333;
-    background: #f5f6f5;
-    .icon-arrow-left{
-      font-size: 28px;
+    margin-top: -45px;
+  }
+
+  //  城市列表
+  .title {
+    font-size: 14px;
+    padding: 10px 15px;
+    color: #999;
+  }
+
+  .name {
+    width: 100%;
+    height: 50px;
+    padding: 0 15px;
+
+  }
+
+  .cityIndex {
+    position: fixed;
+    top: 10%;
+    right: 5px;
+
+    .cityIndexItem {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 28px;
+      width: 28px;
+      border-radius: 50px;
     }
-    .am-navbar-title{
-      color:#333;
+
+    .indexActive {
+      background: green;
+      color: white;
     }
   }
 }

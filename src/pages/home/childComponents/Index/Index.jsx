@@ -60,7 +60,7 @@ export default class Index extends Component {
     async getCenterLocation() {
         const res = await getCurrentCity()
         this.setState({
-            curCityName: res.label
+            curCityName: res
         })
 
     }
@@ -89,6 +89,7 @@ export default class Index extends Component {
                 area: 'AREA%7C88cff55c-aaa4-e2e0'
             }
         })
+        console.log(res)
         this.setState({
             news: res.data.body
         })
@@ -122,9 +123,24 @@ export default class Index extends Component {
     }
 
     renderNews() {
-        return (
-            <div></div>
-        )
+        return this.state.news.map(item => (
+            <div className="news-item" key={item.id}>
+                <div className="imgwrap">
+                    <img
+                        className="img"
+                        src={`http://localhost:8009${item.imgSrc}`}
+                        alt=""
+                    />
+                </div>
+                <Flex className="content" direction="column" justify="between">
+                    <h3 className="title">{item.title}</h3>
+                    <Flex className="info" justify="between">
+                        <span>{item.from}</span>
+                        <span>{item.date}</span>
+                    </Flex>
+                </Flex>
+            </div>
+        ))
     }
 
     render() {
@@ -183,7 +199,7 @@ export default class Index extends Component {
 
                 {/* 最新资讯 */}
                 <div className="news">
-                    <h3 className="group-title">
+                    <h3 className="groupTitle">
                         最新资讯
                     </h3>
                     <WingBlank size={"md"}>
