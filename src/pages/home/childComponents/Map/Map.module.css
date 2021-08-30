@@ -1,0 +1,11 @@
+.Map{
+    height: 100%;
+    width: 100%;
+
+}
+#container{
+    height: 100%;
+}
+.Map :global(.am.navbar){
+    margin-top: -45px;
+}

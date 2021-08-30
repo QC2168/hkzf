@@ -1,38 +1,38 @@
-import React, {Component} from 'react';
-import "./Map.scss"
-import NavHeader from "../../../../components/NavHeader/NavHeader";
+import React, { Component } from 'react';
+import style from './Map.module.css';
+import NavHeader from '../../../../components/NavHeader/NavHeader';
 
 export default class Map extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-    componentDidMount() {
-        console.log(BMap)
-        // 初始化地图实例
-        // react脚手架中全局对象需要使用window来访问
-        //
-        // 获取地理位置信息
-        navigator.geolocation.getCurrentPosition((position => {
-            const map = new BMap.Map("container");
-            const latitude = position.coords.latitude
-            const longitude = position.coords.longitude
-            console.log(latitude, longitude)
-            map.centerAndZoom((new BMap.Point(longitude, latitude)), 15);
-            map.enableScrollWheelZoom(true)
-        }))
+  componentDidMount() {
+    // 获取当前定位城市
+    const { label } = JSON.parse(localStorage.getItem('hkzf_city'));
+    // 获取地理位置信息
+    const map = new BMap.Map('container');
+    map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
+    // 创建地址解析器实例
+    const myGeo = new BMap.Geocoder();
+    // 将地址解析结果显示在地图上，并调整地图视野
+    myGeo.getPoint(label, (point) => {
+      if (point) {
+        // 初始化地图
+        map.centerAndZoom(point, 11);
+        map.addOverlay(new BMap.Marker(point));
+      }
+    },
+    label);
+  }
 
-    }
-
-    render() {
-        return (
-            <div className="Map">
-                <NavHeader>地址找房</NavHeader>
-                <div id="container">
-
-                </div>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div className={style.Map}>
+        <NavHeader>地址找房</NavHeader>
+        <div id="container" className={style.container} />
+      </div>
+    );
+  }
 }

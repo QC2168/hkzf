@@ -1,14 +1,14 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 export default class list extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-    render() {
-        return (
-            <div>list</div>
-        )
-    }
+  render() {
+    return (
+      <div>list</div>
+    );
+  }
 }

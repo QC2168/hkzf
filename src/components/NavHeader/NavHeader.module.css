@@ -1,0 +1,13 @@
+.navBar {
+    color: #333;
+    background: #f5f6f5;
+}
+:global(.icon-arrow-left)
+ {
+    font-size: 28px;
+}
+
+:global(.am-navbar-title){
+    color: #333;
+}
+
