@@ -36,7 +36,7 @@ NavHeader.propTypes = {
   onLeftClick: PropTypes.func,
 };
 NavHeader.defaultProps = {
-  onLeftClick: () => { this.props.history.go(-1); },
+  onLeftClick: null,
 };
 
 // 也是返回一个组件

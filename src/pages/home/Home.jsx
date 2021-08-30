@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { TabBar } from 'antd-mobile';
-import './home.scss';
+import './Home.scss';
 import Index from './childComponents/Index/Index';
 import List from './childComponents/List/List';
 import News from './childComponents/News/News';

@@ -9,6 +9,10 @@ export default class Map extends Component {
   }
 
   componentDidMount() {
+    this.setLocation();
+  }
+
+  setLocation() {
     // 获取当前定位城市
     const { label } = JSON.parse(localStorage.getItem('hkzf_city'));
     // 获取地理位置信息
