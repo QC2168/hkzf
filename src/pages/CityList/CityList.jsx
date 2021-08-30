@@ -144,7 +144,7 @@ export default class CityList extends Component {
     changeCity({ label, value }) {
       const { history } = this.props;
       if (HOUSE_CITY.indexOf(label) > -1) {
-        localStorage.setItem('hkzf_city', JSON.stringify(label, value));
+        localStorage.setItem('hkzf_city', JSON.stringify({ label, value }));
         history.go(-1);
       } else {
         Toast.info('暂无房源数据', 1, null, false);
