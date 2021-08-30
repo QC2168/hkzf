@@ -62,7 +62,7 @@ export default class Index extends Component {
   async getCenterLocation() {
     const res = await getCurrentCity();
     this.setState({
-      curCityName: res,
+      curCityName: res.label,
     });
   }
 

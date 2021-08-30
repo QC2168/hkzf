@@ -40,10 +40,10 @@ export default class Home extends Component {
 
   componentDidUpdate(prevProps) {
     const { location } = this.props;
-    const { setState } = this;
     if (prevProps.location.pathname !== location.pathname) {
       // 路由发生切换
-      setState({
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({
         selectedTab: location.pathname,
       });
     }
