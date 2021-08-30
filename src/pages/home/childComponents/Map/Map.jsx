@@ -52,6 +52,7 @@ export default class Map extends Component {
         const {
           coord: { longitude, latitude }, label: areaName, count, value: uValue,
         } = item;
+        console.log(longitude, latitude);
         //  创建label
         const areaPoint = new BMap.Point(longitude, latitude);
         // 设置setContent后第一个参数中设置的文本内容就失效了
@@ -68,9 +69,9 @@ export default class Map extends Component {
           <p>${count}套</p>
         </div>
       `);
-
         //  设置样式
         label1.setStyle(labelStyle);
+        map.addOverlay(label1);
         // 添加点击时间
         label1.addEventListener('click', () => {
           console.log('click', label1.id);
@@ -80,8 +81,7 @@ export default class Map extends Component {
           //  第二个参数  放大级别
           map.centerAndZoom(areaPoint, 13);
           // 清除当前覆盖物
-          setTimeout(() => { map.addOverlay(label1); }, 0);
-          map.clearOverlays();
+          setTimeout(() => { map.clearOverlays(); }, 0);
         });
       });
     },
