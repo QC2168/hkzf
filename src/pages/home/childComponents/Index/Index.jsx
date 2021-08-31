@@ -9,6 +9,7 @@ import Nav2 from 'assets/images/nav-2.png';
 import Nav3 from 'assets/images/nav-3.png';
 import Nav4 from 'assets/images/nav-4.png';
 import { getCurrentCity } from '../../../../utils';
+import { BASE_URL } from '../../../../utils/url';
 
 const navs = [
   {
@@ -132,7 +133,7 @@ export default class Index extends Component {
         <div className="imgwrap">
           <img
             className="img"
-            src={`http://localhost:8009${item.imgSrc}`}
+            src={BASE_URL + item.imgSrc}
             alt=""
           />
         </div>

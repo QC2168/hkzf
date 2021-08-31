@@ -11,6 +11,8 @@ import 'assets/font/iconfont.css';
 // 避免css样式覆盖
 import App from './App';
 
+import './utils/url';
+
 ReactDOM.render(
   // <React.StrictMode>
   <App />,
