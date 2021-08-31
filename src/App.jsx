@@ -2,9 +2,9 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 // 导入页面组件
-import Home from './pages/home/Home';
+import Home from './pages/Home/Home';
 import CityList from './pages/CityList/CityList';
-import Map from './pages/home/childComponents/Map/Map';
+import Map from './pages/Home/childComponents/Map/Map';
 
 function App() {
   return (

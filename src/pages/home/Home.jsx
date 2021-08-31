@@ -3,9 +3,9 @@ import { Route } from 'react-router-dom';
 import { TabBar } from 'antd-mobile';
 import './Home.scss';
 import Index from './childComponents/Index/Index';
-import List from './childComponents/List/List';
-import News from './childComponents/News/News';
-import Profile from './childComponents/Profile/Profile';
+import List from '../List/List';
+import News from '../News/News';
+import Profile from '../Profile/Profile';
 
 const tabItems = [
   {
