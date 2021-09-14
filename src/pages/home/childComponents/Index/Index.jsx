@@ -10,6 +10,7 @@ import Nav3 from 'assets/images/nav-3.png';
 import Nav4 from 'assets/images/nav-4.png';
 import { getCurrentCity } from '../../../../utils';
 import { BASE_URL } from '../../../../utils/url';
+import SearchHeader from '../../../../components/SearchHeader/SearchHeader';
 
 const navs = [
   {
@@ -150,7 +151,6 @@ export default class Index extends Component {
 
   render() {
     const { swiperData, curCityName, groups } = this.state;
-    const { history } = this.props;
     return (
       <div className="Index">
         {/* 轮播图 */}
@@ -166,19 +166,8 @@ export default class Index extends Component {
         </div>
 
         {/* 搜索 */}
-        <Flex className="search-box">
-          <Flex className="search">
-            <div className="location" onClick={() => history.push('/CityList')}>
-              <span className="name">{curCityName}</span>
-              <i className="iconfont icon-arrow-bottom" />
-            </div>
-            <div className="form" onClick={() => history.push('/search')}>
-              <i className="iconfont icon-search" />
-              <span className="text">请输入小区/地址</span>
-            </div>
-          </Flex>
-          <i className="iconfont icon-map" onClick={() => history.push('/Map')} />
-        </Flex>
+        <SearchHeader cityName={curCityName} />
+
         {/*    导航菜单 */}
         <Flex className="nav">
           {

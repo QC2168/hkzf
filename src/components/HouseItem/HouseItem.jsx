@@ -1,8 +1,6 @@
 import React from 'react';
 
-import PropTypes from 'prop-types';
-
-import styles from './HouseItem.module.css';
+import styles from './HouseItem.module.scss';
 
 function HouseItem({
   src, title, desc, tags, price, onClick, style,
