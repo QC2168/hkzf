@@ -39,7 +39,7 @@ const navs = [
   },
 ];
 
-export default class Index extends Component {
+export default class FilterPicker extends Component {
   constructor(props) {
     super(props);
     this.state = {

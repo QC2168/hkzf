@@ -92,7 +92,7 @@ export default class CityList extends Component {
   // 函数返回值代表最终渲染页面的内容
     rowRenderer = ({
       key, // Unique key within array of rows
-      index, // Index of row within collection
+      index, // FilterPicker of row within collection
       // eslint-disable-next-line no-shadow
       style, // Style object to be applied to row (to position it)
     }) => {
