@@ -8,7 +8,6 @@ class FilterPicker extends Component {
     super(props);
     this.state = {
       value: props.defaultValue,
-      // value: null,
     };
     // console.log('父组件的默认值', this.props.defaultValue);
     console.log('父组件的默认值', this.props);
@@ -28,9 +27,8 @@ class FilterPicker extends Component {
         onCancel, onSave, data, cols, type,
       } = this.props;
       const { value } = this.state;
-      console.log('父组件的数据', data);
       return (
-        <div className={styles['filter-picker']}>
+        <div className={styles.filterPicker}>
           {/* 三级联动 */}
           <PickerView
             data={data}
@@ -39,7 +37,7 @@ class FilterPicker extends Component {
             onChange={this.handleChange}
           />
           {/* 底部 */}
-          <FilterFooter onCancel={onCancel} onSave={() => onSave(value)} onOk={() => onSave(type, value)} />
+          <FilterFooter onCancel={() => onCancel(type)} onSave={() => onSave(type, value)} onOk={() => onSave(type, value)} />
         </div>
       );
     }
