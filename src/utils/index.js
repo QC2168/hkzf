@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+export { BASE_URL } from './url';
+export { API } from './api';
+export * from './auth';
 export const getCurrentCity = () => {
 //    判断本地存储是否有定位的城市
   const localCity = JSON.parse(localStorage.getItem('hkzf_city'));

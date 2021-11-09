@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import { API } from 'utils/api';
 import FilterTitle from '../FilterTitle/FilterTitle';
 import styles from './Filter.module.scss';
 import FilterPicker from '../FilterPicker/FilterPicker';
 
 // 导入自定义axios
-import { API } from '../../utils/api';
 import FilterMore from '../FilterMore/FilterMore';
 
 export default class Filter extends Component {
@@ -46,7 +46,7 @@ export default class Filter extends Component {
       },
     });
     this.setState({
-      filtersData: res,
+      filtersData: res.body,
     });
   }
 

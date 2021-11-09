@@ -6,7 +6,7 @@ import externalGlobals from 'rollup-plugin-external-globals';
 const resolveFixup = {
   name: 'resolve-fixup',
   setup(build) {
-    build.onResolve({ filter: /react-virtualized/ }, async (args) => ({
+    build.onResolve({ filter: /react-virtualized/ }, async () => ({
       path: path.resolve('./node_modules/react-virtualized/dist/umd/react-virtualized.js'),
     }));
   },
@@ -49,7 +49,7 @@ export default defineConfig({
       },
       {
         find: 'utils',
-        replacement: path.resolve(__dirname, 'src/pages'),
+        replacement: path.resolve(__dirname, 'src/utils'),
       },
       {
         find: 'BMap',

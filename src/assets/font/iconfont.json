@@ -6,6 +6,55 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "587637",
+      "name": "资料",
+      "font_class": "ziliao",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "765786",
+      "name": "咨询",
+      "font_class": "shouye",
+      "unicode": "e637",
+      "unicode_decimal": 58935
+    },
+    {
+      "icon_id": "1305475",
+      "name": "历史记录",
+      "font_class": "lishijilu",
+      "unicode": "e640",
+      "unicode_decimal": 58944
+    },
+    {
+      "icon_id": "2048047",
+      "name": "房主",
+      "font_class": "wode",
+      "unicode": "e6a2",
+      "unicode_decimal": 59042
+    },
+    {
+      "icon_id": "3874028",
+      "name": "记录",
+      "font_class": "jilu",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "9982210",
+      "name": "出租",
+      "font_class": "chuzu",
+      "unicode": "e698",
+      "unicode_decimal": 59032
+    },
+    {
+      "icon_id": "11372701",
+      "name": "收藏",
+      "font_class": "shoucang",
+      "unicode": "e8b9",
+      "unicode_decimal": 59577
+    },
+    {
       "icon_id": "20908004",
       "name": "arrow-right",
       "font_class": "arrow-left",

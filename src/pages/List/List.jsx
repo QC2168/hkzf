@@ -3,11 +3,11 @@ import { Flex, Toast } from 'antd-mobile';
 import {
   List, AutoSizer, WindowScroller, InfiniteLoader,
 } from 'react-virtualized';
+import { API } from 'utils/api';
+import { BASE_URL } from 'utils/url';
 import SearchHeader from '../../components/SearchHeader/SearchHeader';
 import styles from './List.module.scss';
 import Filter from '../../components/Filter/Filter';
-import { API } from '../../utils/api';
-import { BASE_URL } from '../../utils/url';
 import HouseItem from '../../components/HouseItem/HouseItem';
 import Sticky from '../../components/Sticky/Sticky';
 import NoHouse from '../../components/NoHouse/NoHouse';
@@ -16,6 +16,10 @@ import { getCurrentCity } from '../../utils';
 // 获取当前定位
 // const { label, value } = JSON.parse(localStorage.getItem('hkzf_city'));
 export default class Index extends Component {
+  label = ''
+
+  value = ''
+
   constructor(props) {
     super(props);
     this.state = {
@@ -29,17 +33,13 @@ export default class Index extends Component {
     this.filters = {};
   }
 
-    label = ''
-
-    value = ''
-
-    // eslint-disable-next-line camelcase
-    async componentDidMount() {
-      const { label, value } = await getCurrentCity();
-      this.label = label;
-      this.value = value;
-      this.searchHouseList();
-    }
+  // eslint-disable-next-line camelcase
+  async componentDidMount() {
+    const { label, value } = await getCurrentCity();
+    this.label = label;
+    this.value = value;
+    this.searchHouseList();
+  }
 
     // 函数返回值代表最终渲染页面的内容
     renderHouseList = ({
@@ -50,6 +50,7 @@ export default class Index extends Component {
     }) => {
       // 根据索引号获取当前这一行的房屋数据
       const { housesList } = this.state;
+      const { history } = this.props;
       const house = housesList[index];
       if (!house) {
         return (
@@ -62,6 +63,7 @@ export default class Index extends Component {
         <HouseItem
           key={key}
           style={style}
+          onClick={() => history.push(`/detail/${house.houseCode}`)}
           src={BASE_URL + house.houseImg}
           title={house.title}
           desc={house.desc}
@@ -84,10 +86,9 @@ export default class Index extends Component {
     }
 
     // 用来获取更多房屋列表数据
-    loadMoreRows = ({ startIndex, stopIndex }) => {
-      console.log(startIndex, stopIndex);
+    loadMoreRows = ({ startIndex, stopIndex }) =>
       // eslint-disable-next-line no-unused-vars
-      return new Promise((resolve) => {
+      new Promise((resolve) => {
         //  数据加载完成时，调用res
         API.get('/houses', {
           params: {
@@ -97,9 +98,8 @@ export default class Index extends Component {
             end: stopIndex,
           },
         }).then((res) => {
-          console.log(res);
           const { housesList } = this.state;
-          const { list } = res;
+          const { list } = res.body;
           this.setState({
             housesList: [...housesList, ...list],
             isloading: false,
@@ -107,8 +107,7 @@ export default class Index extends Component {
           // 调用resolve
           resolve();
         });
-      });
-    }
+      })
 
     // 用于获取房屋数据
     async searchHouseList() {
@@ -124,7 +123,7 @@ export default class Index extends Component {
       });
       Toast.hide();
       // 显示房源
-      const { list, count } = res;
+      const { list, count } = res.body;
       if (count !== 0) {
         Toast.info(`共找到${count}套房源`, 2, null, false);
       }

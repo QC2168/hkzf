@@ -11,7 +11,6 @@ export default class Sticky extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    console.log(this.context);
   }
 
   componentDidMount() {
@@ -24,7 +23,6 @@ export default class Sticky extends Component {
 
   // scroll事件的处理程序
   handleScroll=() => {
-    console.log('handleScroll');
     const placeholderEl = this.placeholder.current;
     const contentEl = this.content.current;
     const { height } = this.props;

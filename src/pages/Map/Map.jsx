@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Toast } from 'antd-mobile';
+import { BASE_URL } from 'utils/url';
+import NavHeader from 'components/NavHeader/NavHeader';
+import HouseItem from 'components/HouseItem/HouseItem';
 import styles from './Map.module.css';
-import NavHeader from '../../../../components/NavHeader/NavHeader';
-import HouseItem from '../../../../components/HouseItem/HouseItem';
-import { BASE_URL } from '../../../../utils/url';
+import { API } from '../../utils';
 // 覆盖物样式
 const labelStyle = {
   cursor: 'pointer',
@@ -71,7 +72,7 @@ export default class Map extends Component {
     // 加载loading
     Toast.loading('加载中', 0, null, false);
     // 获取房源信息
-    const res = await axios.get('http://127.0.0.1:8009/area/map', {
+    const res = await API.get('area/map', {
       params: {
         id,
       },
@@ -79,7 +80,7 @@ export default class Map extends Component {
     Toast.hide();
     // 调用 getTypeAndZoom 方法获取级别和类型
     const { nextZoom, type } = this.getTypeAndZoom();
-    res.data.body.forEach((item) => {
+    res.body.forEach((item) => {
       this.createOverlays(item, nextZoom, type);
     });
   }

@@ -12,7 +12,9 @@ class NavHeader extends Component {
   }
 
   render() {
-    const { onLeftClick, children, history } = this.props;
+    const {
+      onLeftClick, children, rightContent, history,
+    } = this.props;
     // 默认点击行为
     const defaultHandler = () => history.go(-1);
 
@@ -22,8 +24,8 @@ class NavHeader extends Component {
         mode="light"
         icon={<i className="iconfont icon-arrow-left" />}
         onLeftClick={onLeftClick || defaultHandler}
+        rightContent={rightContent}
       >
-        {' '}
         {children}
       </NavBar>
     );
@@ -34,6 +36,8 @@ class NavHeader extends Component {
 NavHeader.propTypes = {
   children: PropTypes.string.isRequired,
   onLeftClick: PropTypes.func,
+  className: PropTypes.string,
+  rightContent: PropTypes.array,
 };
 NavHeader.defaultProps = {
   onLeftClick: null,

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { TabBar } from 'antd-mobile';
 import './Home.scss';
-import Index from './childComponents/Index/Index';
+import Index from './Index/Index';
 import List from '../List/List';
 import News from '../News/News';
 import Profile from '../Profile/Profile';
@@ -91,8 +91,8 @@ export default class Home extends Component {
           noRenderContent
         >
           {
-                        this.renderTabBarItem()
-                    }
+              this.renderTabBarItem()
+          }
         </TabBar>
       </div>
 
