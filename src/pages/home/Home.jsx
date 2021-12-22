@@ -6,6 +6,7 @@ import Index from './Index/Index';
 import List from '../List/List';
 import News from '../News/News';
 import Profile from '../Profile/Profile';
+import AutoRoute from '../../components/AuthRoute/AuthRoute';
 
 const tabItems = [
   {

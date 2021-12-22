@@ -7,13 +7,16 @@ module.exports = {
   extends: [
     // 'plugin:react/recommended',
     'airbnb',
+    'eslint:recommended',
   ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
+      modules: true,
       experimentalObjectRestSpread: true,
     },
-    ecmaVersion: 12,
+    // ecmaVersion: 12,
+    ecmaVersion: 2016,
     sourceType: 'module',
   },
   plugins: [
@@ -28,5 +31,6 @@ module.exports = {
     'react/prop-types': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',
     'jsx-a11y/click-events-have-key-events': 'off',
+    'react/jsx-props-no-spreading': 'off',
   },
 };

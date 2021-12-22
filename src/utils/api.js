@@ -6,7 +6,7 @@ export const API = axios.create({
   baseURL: BASE_URL,
 });
 API.interceptors.request.use((request) => {
-  const { url } = config;
+  const { url } = request;
   // 判断是否登录
   if (url.startsWith('/user') && !url.startsWith('/user/login') && !url.startsWith('/user/registered')) {
     request.headers.authorization = getToken();

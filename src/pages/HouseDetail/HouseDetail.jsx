@@ -85,7 +85,7 @@ export default class HouseDetail extends Component {
     const { history, location } = this.props;
     if (isFavorite) {
       // 已经收藏过了
-      const res = await API.delete(`user/favorites/${this.id}`);
+      const res = await API.delete(`/user/favorites/${this.id}`);
       if (res.status === 200) {
         Toast.success('取消收藏');
         this.setState({
@@ -104,7 +104,7 @@ export default class HouseDetail extends Component {
       }
     } else {
       // 没有收藏
-      const res = await API.post(`user/favorites/${this.id}`);
+      const res = await API.post(`/user/favorites/${this.id}`);
       if (res.status === 200) {
         Toast.success('添加收藏');
         this.setState({
@@ -125,7 +125,7 @@ export default class HouseDetail extends Component {
   }
 
   checkLove = async (id) => {
-    const res = await API.get(`user/favorites/${id}`);
+    const res = await API.get(`/user/favorites/${id}`);
     this.setState({
       isFavorite: res.body.isFavorite,
     });

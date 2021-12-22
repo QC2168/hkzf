@@ -12,7 +12,7 @@ import styles from './Profile.module.scss';
 // 菜单数据
 const menus = [
   {
-    id: 1, name: '我的收藏', iconfont: 'icon-shoucang', to: '/favorate',
+    id: 1, name: '我的收藏', iconfont: 'icon-shoucang', to: '/favorite',
   },
   {
     id: 2, name: '我的出租', iconfont: 'icon-chuzu', to: '/rent',

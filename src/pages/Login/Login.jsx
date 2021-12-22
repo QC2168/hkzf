@@ -98,6 +98,7 @@ const config = {
         // push:给历史记录中增加一条记录
         // replace: 替换掉当前的历史记录
         formikBag.props.history.replace(state.from.pathname);
+        console.log('111111');
       } else {
         formikBag.props.history.go(-1);
       }
