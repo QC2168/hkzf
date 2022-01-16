@@ -11,8 +11,8 @@ import {
     SearchOutline,
     FileOutline,
     UserOutline,
-
 } from 'antd-mobile-icons'
+
 const navs = [
     {
         icon: PieOutline,
@@ -40,18 +40,16 @@ export default ()=>{
       <div id="app">
           <Router>
               {/* 所有路由都嵌套在其中 */}
-              <Routes>
-                  <Route path='/' element={<Home/>} />
-                  <Route path='/Home' element={<Home/>} />
-                  <Route path='/List' element={<List/>} />
-                  <Route path='/News' element={<News/>} />
-                  <Route path='/Profile' element={<Profile/>} />
-              </Routes>
-
+                  <Routes>
+                      <Route path='/' element={<Home/>} />
+                      <Route path='/Home' element={<Home/>} />
+                      <Route path='/List' element={<List/>} />
+                      <Route path='/News' element={<News/>} />
+                      <Route path='/Profile' element={<Profile/>} />
+                  </Routes>
               <TabBar tabs={navs}/>
-
-
           </Router>
+
       </div>
 
   )

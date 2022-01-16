@@ -30,6 +30,5 @@ export default ({tabs}:props)=> {
                 ))}
             </TabBar>
         </div>
-
     )
 }
