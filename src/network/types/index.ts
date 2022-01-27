@@ -22,3 +22,17 @@ export interface NewsDataType{
     imgSrc: string,
     title:string
 }
+
+export interface HousesItemType{
+    desc: string,
+    houseCode: string,
+    houseImg:string,
+    price: number
+    tags: string[]
+    title: string,
+}
+
+export interface HousesListType{
+    count:number;
+    list:HousesItemType[]|[];
+}

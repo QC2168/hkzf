@@ -8,6 +8,7 @@ specifiers:
   antd-mobile: ^5.0.0-rc.7
   antd-mobile-icons: ^0.2.2
   axios: ^0.24.0
+  jotai: ^1.5.3
   less: ^4.1.2
   react: ^17.0.2
   react-dom: ^17.0.2
@@ -19,6 +20,7 @@ dependencies:
   antd-mobile: registry.npmmirror.com/antd-mobile/5.0.0-rc.9_react-dom@17.0.2+react@17.0.2
   antd-mobile-icons: registry.npmmirror.com/antd-mobile-icons/0.2.2
   axios: registry.npmmirror.com/axios/0.24.0
+  jotai: registry.npmmirror.com/jotai/1.5.3_react@17.0.2
   less: registry.npmmirror.com/less/4.1.2
   react: registry.npmmirror.com/react/17.0.2
   react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
@@ -1304,6 +1306,46 @@ packages:
     resolution: {integrity: sha1-4SIvRt3ahd6tD9HJ3xMXYOd3VcE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/is-what/download/is-what-3.14.1.tgz}
     name: is-what
     version: 3.14.1
+    dev: false
+
+  registry.npmmirror.com/jotai/1.5.3_react@17.0.2:
+    resolution: {integrity: sha512-iD8MkbehxTjfRUtIJJdyQcjbAe2MqjW1+oFc5lvfgRjLHwjRQyWnZC3gdGAOQCOqUSPZHOBGgWyP/8gBDckaNQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/jotai/download/jotai-1.5.3.tgz}
+    id: registry.npmmirror.com/jotai/1.5.3
+    name: jotai
+    version: 1.5.3
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      '@babel/core': '*'
+      '@babel/template': '*'
+      '@urql/core': '*'
+      immer: '*'
+      optics-ts: '*'
+      react: '>=16.8'
+      react-query: '*'
+      valtio: '*'
+      wonka: '*'
+      xstate: '*'
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
+      '@babel/template':
+        optional: true
+      '@urql/core':
+        optional: true
+      immer:
+        optional: true
+      optics-ts:
+        optional: true
+      react-query:
+        optional: true
+      valtio:
+        optional: true
+      wonka:
+        optional: true
+      xstate:
+        optional: true
+    dependencies:
+      react: registry.npmmirror.com/react/17.0.2
     dev: false
 
   registry.npmmirror.com/js-cookie/3.0.1:

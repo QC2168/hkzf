@@ -4,12 +4,14 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
     "antd-mobile": "^5.0.0-rc.7",
     "antd-mobile-icons": "^0.2.2",
     "axios": "^0.24.0",
+    "jotai": "^1.5.3",
     "less": "^4.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

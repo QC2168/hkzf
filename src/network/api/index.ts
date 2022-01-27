@@ -1,5 +1,5 @@
 import Api, {ApiType} from '../request';
-import {ResponseDataType, SwiperDataType, GroupDataType, NewsDataType} from '../types';
+import {ResponseDataType, SwiperDataType, GroupDataType, NewsDataType, HousesListType} from '../types';
 import {AxiosRequestConfig} from 'axios';
 import responseInterceptor from '../Interceptors/responseInterceptor';
 import requestInterceptor from '../Interceptors/requestInterceptor';
@@ -41,3 +41,14 @@ export const getNews=()=>{
         method: 'get'
     })
 }
+
+export const getHousesList=(cityId: string)=>{
+    return ApiInstance.request<HousesListType>({
+        url: '/houses',
+        method: 'get',
+        params:{
+            cityId
+        }
+    })
+}
+

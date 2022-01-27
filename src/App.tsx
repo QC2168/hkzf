@@ -6,13 +6,16 @@ import News from './pages/News'
 import Profile from './pages/Profile'
 import TabBar from './components/TabBar'
 import './App.less'
+import { atom } from 'jotai'
 import {
     PieOutline ,
     SearchOutline,
     FileOutline,
     UserOutline,
 } from 'antd-mobile-icons'
-
+import {useMount} from './utils';
+import {useAtom} from 'jotai';
+import {cityAtom,countAtom} from './atom';
 const navs = [
     {
         icon: PieOutline,
@@ -36,6 +39,18 @@ const navs = [
     },
 ];
 export default ()=>{
+    const [city, setCity] = useAtom(cityAtom);
+    const [count, setCount] = useAtom(countAtom);
+    useMount(()=>{
+        // // 默认城市
+        // setCity(e=>e=({
+        //     cityName: '广州',
+        //     cityID: 'AREA|e4940177-c04c-383d'
+        // }))
+        setCount(e=>e+1)
+        console.log(city);
+        console.log(count);
+    })
   return (
       <div id="app">
           <Router>

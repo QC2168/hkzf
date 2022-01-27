@@ -1,15 +1,15 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect, useContext, FC} from 'react';
 import {SwiperRef} from 'antd-mobile/es/components/swiper';
 import {Button, Space, Swiper, Toast} from 'antd-mobile';
 import styles from './index.module.less';
 import {getGroups, getNews, getSwiper} from '../../network/api';
 import {BASE_URL, useMount} from '../../utils';
-import {GroupDataType, NewsDataType, ResponseDataType, SwiperDataType} from '../../network/types';
-import {AxiosResponse} from 'axios';
+import {GroupDataType, NewsDataType, SwiperDataType} from '../../network/types';
 import Nav1 from 'assets/images/nav-1.png';
 import Nav2 from 'assets/images/nav-2.png';
 import Nav3 from 'assets/images/nav-3.png';
 import Nav4 from 'assets/images/nav-4.png';
+import Search from '../../components/Search';
 
 const navs = [
     {
@@ -38,18 +38,15 @@ const navs = [
     },
 ];
 
-interface swiperPropsType {
-    swiperData: SwiperDataType[] | []
-}
 
-const swiperFC = ({swiperData}: swiperPropsType) => {
+const swiperFC = (swiperData: SwiperDataType[]) => {
 
-    const items = swiperData.map(({alt, id, imgSrc}) => (
-        <Swiper.Item key={id}>
+    const items = swiperData.map((item) => (
+        <Swiper.Item key={item.id}>
             <div
                 className={styles.swiper}
             >
-                <img src={BASE_URL + imgSrc} alt={alt}/>
+                <img src={BASE_URL + item.imgSrc} alt={item.alt}/>
             </div>
         </Swiper.Item>
     ));
@@ -65,7 +62,7 @@ export default function Index() {
         const swiperData: SwiperDataType[] = await getSwiper();
         setSwiperData(swiperData);
     };
-    const getGourpsData = async ()=> {
+    const getGourpsData = async () => {
         const groupsData: GroupDataType[] = await getGroups();
         setGroupsData(groupsData);
     };
@@ -73,15 +70,19 @@ export default function Index() {
         const newsData: NewsDataType[] = await getNews();
         setNewsData(newsData);
     };
-    useMount(()=>{
+    useMount(() => {
         getSwiperData();
         getGourpsData();
         getNewsData();
-    })
+    });
+
+
     return (
         <div>
+            {/*搜索框*/}
+            {<Search/>}
             {/*轮播图*/}
-            {swiperFC({swiperData})}
+            {swiperFC(swiperData)}
             {/*导航栏*/}
             <div className={styles.navs}>
                 {
@@ -97,14 +98,13 @@ export default function Index() {
             </div>
             {/*租房小组*/}
             <div className={styles.Groups}>
-
                 <div className={styles.GroupsHeader}>
                     <div className={styles.GroupsHeaderTitle}>租房小组</div>
                     <div className={styles.GroupsHeaderMore}>更多</div>
                 </div>
                 <div className={styles.GroupsCards}>
                     {
-                        groupsData.map((item) => {
+                        groupsData.map((item:GroupDataType) => {
                             return (
                                 <div className={styles.GroupCardsCard} key={item.id}>
                                     <div>
@@ -125,13 +125,13 @@ export default function Index() {
             <div className={styles.news}>
                 <h3>最新资讯</h3>
                 {
-                    newsData.map((item)=>{
+                    newsData.map((item:NewsDataType) => {
                         return (
                             <div className={styles.newsItem}>
                                 <div className={styles.newsImgWrap}>
                                     <img
                                         className={styles.newsItemImg}
-                                        src={BASE_URL+item.imgSrc}
+                                        src={BASE_URL + item.imgSrc}
                                         alt={item.title}
                                     />
                                 </div>
@@ -144,9 +144,9 @@ export default function Index() {
                                 </div>
                             </div>
 
-                        )
+                        );
 
-                })
+                    })
 
                 }
             </div>
