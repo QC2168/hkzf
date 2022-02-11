@@ -42,14 +42,7 @@ export default ()=>{
     const [city, setCity] = useAtom(cityAtom);
     const [count, setCount] = useAtom(countAtom);
     useMount(()=>{
-        // // 默认城市
-        // setCity(e=>e=({
-        //     cityName: '广州',
-        //     cityID: 'AREA|e4940177-c04c-383d'
-        // }))
-        setCount(e=>e+1)
-        console.log(city);
-        console.log(count);
+
     })
   return (
       <div id="app">
