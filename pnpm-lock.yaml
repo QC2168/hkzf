@@ -11,6 +11,7 @@ specifiers:
   antd-mobile: ^5.0.0-rc.7
   antd-mobile-icons: ^0.2.2
   axios: ^0.24.0
+  classnames: ^2.3.1
   commitizen: ^4.2.4
   cz-conventional-changelog: ^3.3.0
   husky: ^7.0.4
@@ -28,6 +29,7 @@ dependencies:
   antd-mobile: registry.npmmirror.com/antd-mobile/5.0.0-rc.9_react-dom@17.0.2+react@17.0.2
   antd-mobile-icons: registry.npmmirror.com/antd-mobile-icons/0.2.2
   axios: registry.npmmirror.com/axios/0.24.0
+  classnames: registry.npmmirror.com/classnames/2.3.1
   jotai: registry.npmmirror.com/jotai/1.5.3_react@17.0.2
   less: registry.npmmirror.com/less/4.1.2
   react: registry.npmmirror.com/react/17.0.2
@@ -1367,7 +1369,7 @@ packages:
     dev: true
 
   registry.npmmirror.com/classnames/2.3.1:
-    resolution: {integrity: sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/classnames/download/classnames-2.3.1.tgz}
+    resolution: {integrity: sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/classnames/-/classnames-2.3.1.tgz}
     name: classnames
     version: 2.3.1
     dev: false
