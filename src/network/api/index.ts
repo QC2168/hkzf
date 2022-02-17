@@ -1,5 +1,13 @@
 import Api, {ApiType} from '../request';
-import {ResponseDataType, SwiperDataType, GroupDataType, NewsDataType, HousesListType, ConditionType} from '../types';
+import {
+    ResponseDataType,
+    SwiperDataType,
+    GroupDataType,
+    NewsDataType,
+    HousesListType,
+    ConditionType,
+    HousesItemDetailType, HousesMapItemType
+} from '../types';
 import {AxiosRequestConfig} from 'axios';
 import responseInterceptor from '../Interceptors/responseInterceptor';
 import requestInterceptor from '../Interceptors/requestInterceptor';
@@ -100,3 +108,20 @@ export const getCondition = (cityId: string, params: paramsType={}) => {
         }
     });
 };
+
+export const getHousesDetail=(housesCode:string)=>{
+    return ApiInstance.request<HousesItemDetailType>({
+        url:`/houses/${housesCode}`,
+        method:'get'
+    })
+}
+// 地图找房
+
+export const getMapHouses=(housesCode:string)=>{
+    return ApiInstance.request<HousesMapItemType[]>({
+        url:'/area/map',
+        params:{
+            id:housesCode
+        }
+    })
+}

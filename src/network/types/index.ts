@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface ResponseDataType<Data = any> {
     body: Data,
     description: string,
@@ -26,12 +28,25 @@ export interface NewsDataType {
 }
 
 export interface HousesItemType {
-    desc: string,
-    houseCode: string,
-    houseImg: string,
+    desc: string
+    houseCode: string
+    houseImg: string|string[]
     price: number
     tags: string[]
     title: string,
+    style?: React.CSSProperties
+    onClick?: () => void
+}
+
+export interface HousesItemDetailType extends HousesItemType {
+    community: string
+    coord: { latitude: string, longitude: string }
+    description: string
+    floor: string
+    oriented: string[]
+    roomType:string
+    size: number
+    supporting: string[]
 }
 
 export interface HousesListType {
@@ -98,4 +113,12 @@ export interface ConditionType {
     rentType: rentType[],
     room: roomType[],
     subway: subwayType,
+}
+
+//地图找房
+export interface HousesMapItemType{
+    coord: { latitude: string, longitude: string }
+    count:number
+    label:string
+    value:string
 }

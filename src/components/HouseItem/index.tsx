@@ -4,17 +4,19 @@ import {useState} from 'react';
 import {BASE_URL} from '../../utils';
 import {HousesItemType} from '../../network/types';
 
-type tagColorType = 'default' | 'primary' | 'success' | 'warning' | 'danger'
+export type tagColorType = 'default' | 'primary' | 'success' | 'warning' | 'danger'
+const tagColor:tagColorType[]=['default', 'primary', 'success', 'warning', 'danger']
 export default function index({
                                   desc,
                                   houseImg,
                                   price,
                                   tags,
-                                  title
+                                  title,
+                                    style,
+    onClick
                               }: HousesItemType) {
-    const [tagColor, setTagColor] = useState<tagColorType[]>(['default', 'primary', 'success', 'warning', 'danger']);
     return (
-        <div className={styles.HouseItem}>
+        <div className={styles.HouseItem} style={style} onClick={onClick}>
             <div className={styles.left}>
                 <img src={BASE_URL + houseImg} alt=""/>
             </div>

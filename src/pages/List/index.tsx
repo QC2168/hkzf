@@ -9,9 +9,12 @@ import {List, AutoSizer, WindowScroller, ListRowProps} from 'react-virtualized';
 import Filter from '../../components/Filter';
 import {ColumnsType} from '../../components/Filter/types';
 import {Empty} from 'antd-mobile';
+import {log} from 'util';
+import {useNavigate} from 'react-router-dom';
 
 
 export default () => {
+    let navigate = useNavigate();
     const [city, updateCity] = useAtom(updateCityAtom);
     const [houses, setHouses] = useState<HousesListType>({
         count: 0,
@@ -35,17 +38,20 @@ export default () => {
         };
         setCondition(obj);
     };
+    useMount(() => {
+        getHouses();
+        getConditionData();
+    });
 
     const getHouses = async () => {
         const res = await getHousesList(city.cityID);
         setHouses(res);
     };
 
-    useMount(() => {
-        getHouses();
-        getConditionData();
-    });
-
+const toDetail=(code:string):void=>{
+    console.log(code);
+    navigate(`/detail/${code}`)
+    }
     function _noRowsRenderer() {
         return <Empty
             style={{padding: '64px 0'}}
@@ -57,8 +63,10 @@ export default () => {
     function _rowRenderer({key, index, style}: ListRowProps) {
         const house: HousesItemType = houses.list[index];
         return (
-            <HouseItem key={key} title={house.title} houseImg={house.houseImg} tags={house.tags} desc={house.desc}
-                       price={house.price} houseCode={house.houseCode}/>
+            house?
+            <HouseItem
+                key={key} style={style} title={house.title} houseImg={house.houseImg} tags={house.tags} desc={house.desc}
+                       price={house.price} houseCode={house.houseCode}  onClick={()=>toDetail(house.houseCode)}/>:<div>加载中</div>
         );
 
     }
@@ -73,8 +81,9 @@ export default () => {
                     ({height}) => (
                         <AutoSizer>
                             {({width}) => (
+                                // 高度减去90是筛选框的高度+tabbar高度
                                 <List
-                                    height={height}
+                                    height={height-90}
                                     rowCount={houses.list.length}
                                     rowHeight={110}
                                     noRowsRenderer={_noRowsRenderer}

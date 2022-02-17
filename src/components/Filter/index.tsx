@@ -86,15 +86,15 @@ export default (FColumns: ColumnsType) => {
                         <CascadePickerView options={FColumns.area}
                                            onChange={(val) => {
                                                const curData = selectedStatusVal;
-                                               let areaVal = '';
+                                               let areaVal: string = '';
                                                if (val[2] === 'null') {
                                                    console.log(`2`);
-                                                   areaVal = val[1];
+                                                   areaVal = val[1] as string;
                                                } else if (val[1] === 'null') {
                                                    console.log(`1`);
-                                                   areaVal = val[0];
+                                                   areaVal = val[0] as string;
                                                } else if (val[2] !== 'null') {
-                                                   areaVal = val[2];
+                                                   areaVal = val[2] as string;
                                                }
                                                curData.area = areaVal;
                                                setSelectedStatusVal(curData);
@@ -108,7 +108,7 @@ export default (FColumns: ColumnsType) => {
                         <CascadePickerView options={FColumns.rentType}
                                            onChange={(val, extend) => {
                                                const curData = selectedStatusVal;
-                                               curData.rentType = val[0];
+                                               curData.rentType = val[0] as string;
                                                setSelectedStatusVal(curData);
                                            }}
                         />
@@ -120,7 +120,7 @@ export default (FColumns: ColumnsType) => {
                         <CascadePickerView options={FColumns.price}
                                            onChange={(val, extend) => {
                                                const curData = selectedStatusVal;
-                                               curData.price = val[0];
+                                               curData.price = val[0] as string;
                                                setSelectedStatusVal(curData);
                                            }}
                         />
