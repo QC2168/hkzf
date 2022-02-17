@@ -16,7 +16,7 @@ import {
     FileOutline,
     UserOutline,
 } from 'antd-mobile-icons';
-import {useMount} from './utils';
+import {useMount} from 'react-use';
 import {useAtom} from 'jotai';
 import {cityAtom, countAtom} from './atom';
 

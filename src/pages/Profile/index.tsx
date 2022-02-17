@@ -8,6 +8,9 @@ import {
     UserCircleOutline, FileOutline, CalendarOutline
 } from 'antd-mobile-icons';
 import classnames from 'classnames';
+import {useMount} from 'react-use';
+import {atom, useAtom} from 'jotai';
+import {addHousesFavoritesAtom, housesFavoritesAtom, housesRecordsAtom} from '../../atom';
 // 默认头像
 const DEFAULT_AVATAR = `${BASE_URL}/img/profile/avatar.png`;
 const menus = [
@@ -27,7 +30,12 @@ const menus = [
     {id: 6, name: '联系我们', iconfont: <TeamOutline fontSize={24}/>},
 ];
 export default () => {
-
+    const [housesRecord]=useAtom(housesRecordsAtom)
+    const [housesFavorites]=useAtom(housesFavoritesAtom)
+useMount(()=>{
+//    获取浏览记录数据
+    console.log(housesRecord);
+})
     return (
         <div className={styles.Profile}>
             {/*头部 头像*/}
@@ -43,13 +51,12 @@ export default () => {
             {/*数据显示*/}
             <div className={styles.dataCard}>
                 <div className={[styles.dataCardItem, styles.fc].join(' ')}>
-                    <div>0</div>
+                    <div>{housesFavorites.length}</div>
                     <div>我的收藏</div>
                 </div>
                 <div className={classnames(styles.dataCardItem, styles.fc)}>
-                    <div className={styles.fc}>0</div>
+                    <div className={styles.fc}>{housesRecord.length}</div>
                     <div className={styles.fc}>浏览记录</div>
-
                 </div>
 
             </div>

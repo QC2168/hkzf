@@ -3,7 +3,8 @@ import {SwiperRef} from 'antd-mobile/es/components/swiper';
 import {Button, Space, Swiper, Toast} from 'antd-mobile';
 import styles from './index.module.less';
 import {getGroups, getNews, getSwiper} from '../../network/api';
-import {BASE_URL, useMount} from '../../utils';
+import {BASE_URL} from '../../utils';
+import {useMount} from 'react-use'
 import {GroupDataType, NewsDataType, SwiperDataType} from '../../network/types';
 import Nav1 from 'assets/images/nav-1.png';
 import Nav2 from 'assets/images/nav-2.png';

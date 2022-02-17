@@ -1,5 +1,5 @@
 import HouseItem from '../../components/HouseItem';
-import {useMount} from '../../utils';
+import {useMount} from 'react-use';
 import {useState} from 'react';
 import {HousesItemType, HousesListType} from '../../network/types';
 import {getCondition, getHousesList} from '../../network/api';
@@ -9,7 +9,6 @@ import {List, AutoSizer, WindowScroller, ListRowProps} from 'react-virtualized';
 import Filter from '../../components/Filter';
 import {ColumnsType} from '../../components/Filter/types';
 import {Empty} from 'antd-mobile';
-import {log} from 'util';
 import {useNavigate} from 'react-router-dom';
 
 

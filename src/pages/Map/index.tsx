@@ -1,8 +1,8 @@
 import {useGeolocation, useMount} from 'react-use';
-import style from './index.module.less'
+import styles from './index.module.less'
 import NavBar from '../../components/NavBar';
 import {getMapHouses} from '../../network/api';
-import {atom, useAtom} from 'jotai';
+import {useAtom} from 'jotai';
 import {updateCityAtom} from '../../atom';
 import {useState} from 'react';
 import {HousesMapItemType} from '../../network/types';
@@ -31,12 +31,18 @@ export default ()=>{
     }
     const createRect=(point, name, count, id)=>{
         //创建标注
-        const.addOverlay(label);
+        const label=new BMap.Label('',{
+            position: point,
+            offset: new BMap.Size(-50, -28),
+        })
+        label.id=id
+        label.setStyle(labelStyle)
+        map.addOverlay(label);
         console.log(cityID);
         // 设置房源覆盖物内容
         label.setContent(`
-  <div class="${style.bubble}">
-          <p class="${style.name}">${name}</p>
+  <div class="${styles.bubble}">
+          <p class="${styles.name}">${name}</p>
           <p>${count}套</p>
         </div>
       `);
@@ -52,7 +58,7 @@ export default ()=>{
     return (
         <>
             <NavBar>地图找房</NavBar>
-            <div id='container' className={style.container}>Map</div>
+            <div id='container' className={styles.container}>Map</div>
         </>
     )
 }
