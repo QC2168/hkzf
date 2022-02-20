@@ -2,8 +2,8 @@ import { atom } from 'jotai'
 import {cityType, HousesRecordType} from './types';
 
 export const cityAtom = atom<cityType>({
-    cityName:'北京',
-    cityID:'AREA|88cff55c-aaa4-e2e0'
+    cityName:'广州市',
+    cityID:'AREA|e4940177-c04c-383d'
 })
 export const updateCityAtom=atom(
     (get)=>get(cityAtom),

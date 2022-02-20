@@ -8,6 +8,8 @@ specifiers:
   '@types/react': ^17.0.39
   '@types/react-dom': ^17.0.11
   '@types/react-virtualized': ^9.21.18
+  '@uiw/react-baidu-map': ^2.0.8
+  '@uiw/react-baidu-map-types': ^2.0.8
   '@vitejs/plugin-react': ^1.2.0
   antd-mobile: ^5.0.0-rc.26
   antd-mobile-icons: ^0.2.2
@@ -29,6 +31,7 @@ specifiers:
 
 dependencies:
   '?': link:../../../?
+  '@uiw/react-baidu-map': registry.npmmirror.com/@uiw/react-baidu-map/2.0.8_react-dom@17.0.2+react@17.0.2
   antd-mobile: registry.npmmirror.com/antd-mobile/5.0.0-rc.26_react-dom@17.0.2+react@17.0.2
   antd-mobile-icons: registry.npmmirror.com/antd-mobile-icons/0.2.2
   axios: registry.npmmirror.com/axios/0.24.0
@@ -48,6 +51,7 @@ devDependencies:
   '@types/react': registry.npmmirror.com/@types/react/17.0.39
   '@types/react-dom': registry.npmmirror.com/@types/react-dom/17.0.11
   '@types/react-virtualized': registry.npmmirror.com/@types/react-virtualized/9.21.18
+  '@uiw/react-baidu-map-types': registry.npmmirror.com/@uiw/react-baidu-map-types/2.0.8_react-dom@17.0.2+react@17.0.2
   '@vitejs/plugin-react': registry.npmmirror.com/@vitejs/plugin-react/1.2.0
   commitizen: registry.npmmirror.com/commitizen/4.2.4
   cz-conventional-changelog: registry.npmmirror.com/cz-conventional-changelog/3.3.0
@@ -379,6 +383,15 @@ packages:
       '@babel/plugin-syntax-jsx': registry.npmmirror.com/@babel/plugin-syntax-jsx/7.16.7_@babel+core@7.17.2
       '@babel/types': registry.npmmirror.com/@babel/types/7.17.0
     dev: true
+
+  registry.npmmirror.com/@babel/runtime/7.16.7:
+    resolution: {integrity: sha512-9E9FJowqAsytyOY6LG+1KuueckRL+aQW+mKvXRXnuFGyRAyepJPmEo9vgMfXUA6O9u3IeEdv9MAkppFcaQwogQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@babel/runtime/-/runtime-7.16.7.tgz}
+    name: '@babel/runtime'
+    version: 7.16.7
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: registry.npmmirror.com/regenerator-runtime/0.13.9
+    dev: false
 
   registry.npmmirror.com/@babel/runtime/7.17.2:
     resolution: {integrity: sha512-hzeyJyMA1YGdJTuWU0e/j4wKXrU4OMFvY2MSlaI9B7VQb0r5cxTE3EAIS2Q7Tn2RIcDkRvTA/v2JsAEhxe99uw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@babel/runtime/-/runtime-7.17.2.tgz}
@@ -845,6 +858,472 @@ packages:
     name: '@types/scheduler'
     version: 0.16.2
     dev: true
+
+  registry.npmmirror.com/@uiw/react-baidu-map-api-loader/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-wPYRcEgjn2bX2FwsZAtzQGGfiQ6r5BJY57x9frSt1/eN4CtS5MmGwamk3/AitB4GPYYnYMbbV3rcYYIDZwLtJw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-api-loader/-/react-baidu-map-api-loader-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-api-loader/2.0.8
+    name: '@uiw/react-baidu-map-api-loader'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-utils': registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.npmmirror.com/@uiw/react-baidu-map-canvas-layer/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-3XNWA+580j5ZGBR605zFp84dU6mRcFQbCRCqoTHDjx9j+H4mtFp0s8iVSEuhXpH7XeIGvRYdrxj1djvuSn25wg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-canvas-layer/-/react-baidu-map-canvas-layer-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-canvas-layer/2.0.8
+    name: '@uiw/react-baidu-map-canvas-layer'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-map': registry.npmmirror.com/@uiw/react-baidu-map-map/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-utils': registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.npmmirror.com/@uiw/react-baidu-map-circle/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-E9ktzo2/Mt2f3kVXl6GKGBVogxnGpM8Skz0Z6ziP9SYVm4lxd9isCLwNFnWjiK75Spd4Sf/fPBxfw7m0ixIKNQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-circle/-/react-baidu-map-circle-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-circle/2.0.8
+    name: '@uiw/react-baidu-map-circle'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-map': registry.npmmirror.com/@uiw/react-baidu-map-map/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-utils': registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.npmmirror.com/@uiw/react-baidu-map-control/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-OpgIFAw1sTUXk5TPQRHQK8MnvqXaZneF5MWcDpZ/FM3kvl/os18oz967El6AKOwfb/b9/PDE++wCn/Oy/5BwPg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-control/-/react-baidu-map-control-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-control/2.0.8
+    name: '@uiw/react-baidu-map-control'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-map': registry.npmmirror.com/@uiw/react-baidu-map-map/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-utils': registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.npmmirror.com/@uiw/react-baidu-map-copyright-control/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-tISUCpUD8JEgH/OLjUMMJF0JpCRM96xBSS07hIYM7xsPRojgvawW591UR4i7RHgK4dH5MsQaK/MCWzVtmk3Hcw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-copyright-control/-/react-baidu-map-copyright-control-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-copyright-control/2.0.8
+    name: '@uiw/react-baidu-map-copyright-control'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-map': registry.npmmirror.com/@uiw/react-baidu-map-map/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-utils': registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.npmmirror.com/@uiw/react-baidu-map-curve-line/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-HiQMaPIewu8LprWqF85XUsoR3VdLf0O2x1aOj7zY0iONDD01+slpIgRpqBADJdDRXuZSDI3FmMqIZJ1XuroG5A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-curve-line/-/react-baidu-map-curve-line-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-curve-line/2.0.8
+    name: '@uiw/react-baidu-map-curve-line'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-map': registry.npmmirror.com/@uiw/react-baidu-map-map/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-utils': registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.npmmirror.com/@uiw/react-baidu-map-custom-overlay/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-8GKJyi/7Ae7kuel2qJGqGzpQGhhit6Xrl7ilXZ9tDDAdCd8jA+8OSUa+ZGaFv2jAYHXdGNTcBNrVA2fkZDuc8Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-custom-overlay/-/react-baidu-map-custom-overlay-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-custom-overlay/2.0.8
+    name: '@uiw/react-baidu-map-custom-overlay'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-map': registry.npmmirror.com/@uiw/react-baidu-map-map/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-utils': registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.npmmirror.com/@uiw/react-baidu-map-drawing-manager/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-NctVJHxtEn5VUDhUL8gRdPdXVOA4bdzTQUQ9sRs+0NdZS3HAPXfFM7L4vAL9YvcXh/ZSMA4zaYH6O1hOooDFUg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-drawing-manager/-/react-baidu-map-drawing-manager-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-drawing-manager/2.0.8
+    name: '@uiw/react-baidu-map-drawing-manager'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-map': registry.npmmirror.com/@uiw/react-baidu-map-map/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-utils': registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.npmmirror.com/@uiw/react-baidu-map-geolocation-control/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-zH4+SkgSH9KbiK9IS1UvOLaBndFHnTFAUI5Dt8huBZQWkyTDZSFAcYqomEt0AxHWcYM8N7dxIo7WcpgBqB5sTQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-geolocation-control/-/react-baidu-map-geolocation-control-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-geolocation-control/2.0.8
+    name: '@uiw/react-baidu-map-geolocation-control'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-map': registry.npmmirror.com/@uiw/react-baidu-map-map/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-utils': registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.npmmirror.com/@uiw/react-baidu-map-ground-overlay/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-ef8rCmqjszgxoJQe4xOVMQXaJN9Otqk5d58cKvBAl2yyKQ1MN0Ol83axRvr3pn7Iktu03dQ+smeFfrUz7incow==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-ground-overlay/-/react-baidu-map-ground-overlay-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-ground-overlay/2.0.8
+    name: '@uiw/react-baidu-map-ground-overlay'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-map': registry.npmmirror.com/@uiw/react-baidu-map-map/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-utils': registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.npmmirror.com/@uiw/react-baidu-map-info-window/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-63ptuLtuPPLmX8mbJ173eBmoDbreMi88CP11paZxMJi3F9X/d0wqzjWfsjldQ0biBSxWHkpVd+zAdwmUgh1uhQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-info-window/-/react-baidu-map-info-window-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-info-window/2.0.8
+    name: '@uiw/react-baidu-map-info-window'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-map': registry.npmmirror.com/@uiw/react-baidu-map-map/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-utils': registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.npmmirror.com/@uiw/react-baidu-map-label/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-AFpcdwTcO3cRnZSJ1SsctnmCbgv5l3DlILITaHyOpUMdckC3xKHC1GBUwzOWqeAOrpQDUKLAeqmihnjE20SnzQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-label/-/react-baidu-map-label-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-label/2.0.8
+    name: '@uiw/react-baidu-map-label'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-map': registry.npmmirror.com/@uiw/react-baidu-map-map/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-utils': registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.npmmirror.com/@uiw/react-baidu-map-map/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-OnQxrxGkFL1CrYE2WHHlPsdRtBY8nRLi4rwq3NfQyV6tnI35Bl1vVnXYbr+jq9+XwO1+TxzsmnXMNRdzbUthEw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-map/-/react-baidu-map-map-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-map/2.0.8
+    name: '@uiw/react-baidu-map-map'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-types': registry.npmmirror.com/@uiw/react-baidu-map-types/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-utils': registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.npmmirror.com/@uiw/react-baidu-map-marker/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-5cAWwHw5WU3rSYGN5BPMjDTFC3tU3kFmR7M7PzDnR5oQgPj61RkoqZZcjMpunlawGTk6RBLXprByV7xcISEwnA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-marker/-/react-baidu-map-marker-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-marker/2.0.8
+    name: '@uiw/react-baidu-map-marker'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-map': registry.npmmirror.com/@uiw/react-baidu-map-map/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-utils': registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.npmmirror.com/@uiw/react-baidu-map-navigation-control/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-hGUwEYPbY1SVs58mTRY3Mvf40k3/y/FkqVT79Vg+NwGmAJxdlZ5cEoJQZX2Z8qFNDg4vsY4sLcWABn7teDJ5IQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-navigation-control/-/react-baidu-map-navigation-control-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-navigation-control/2.0.8
+    name: '@uiw/react-baidu-map-navigation-control'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-map': registry.npmmirror.com/@uiw/react-baidu-map-map/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-utils': registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.npmmirror.com/@uiw/react-baidu-map-overview-map-control/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-qiY7Up/3l3w4Fn9MtW8jP7Lt/MoBzUTc7/uwXg25rphC7L9VlROW+gp1E/cfmY5W3SWC2I/SU3oEPaPi6vEuvg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-overview-map-control/-/react-baidu-map-overview-map-control-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-overview-map-control/2.0.8
+    name: '@uiw/react-baidu-map-overview-map-control'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-map': registry.npmmirror.com/@uiw/react-baidu-map-map/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-utils': registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.npmmirror.com/@uiw/react-baidu-map-panorama-control/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-I4AZHy9GJsNi5rovtlK+Q9EVZflI6L11xcNMRu3/iKsR7qtd5ghTQ1ZG/4ES9XXEcikgo97kfElf61vZ+wP6xA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-panorama-control/-/react-baidu-map-panorama-control-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-panorama-control/2.0.8
+    name: '@uiw/react-baidu-map-panorama-control'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-map': registry.npmmirror.com/@uiw/react-baidu-map-map/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-utils': registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.npmmirror.com/@uiw/react-baidu-map-point-collection/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-XehK1xm6+alt8I1/Rk654n4JXt1i5vxlM5IoyLbAEGjjvgjPM7B5v8LrO5OwogolbTpOZKeVQ34R+TU3IA25rg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-point-collection/-/react-baidu-map-point-collection-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-point-collection/2.0.8
+    name: '@uiw/react-baidu-map-point-collection'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-map': registry.npmmirror.com/@uiw/react-baidu-map-map/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-utils': registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.npmmirror.com/@uiw/react-baidu-map-polygon/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-J6b8yHsjjNYPxBUDCPZviBvfMxwPPPzsov6Iwg3jeTJPNXiUNHQFVvS+/uG5ObYOgOyYDV2VpDUrhrqc3gAivQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-polygon/-/react-baidu-map-polygon-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-polygon/2.0.8
+    name: '@uiw/react-baidu-map-polygon'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-map': registry.npmmirror.com/@uiw/react-baidu-map-map/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-utils': registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.npmmirror.com/@uiw/react-baidu-map-polyline/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-n+fAzuyhkvroj1dy3acx674tdVdTDMmN01snemxzU1lzj7zXO6Ik+M5KDvxomrhDFwDYQDTgE36ZA54AejuNhA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-polyline/-/react-baidu-map-polyline-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-polyline/2.0.8
+    name: '@uiw/react-baidu-map-polyline'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-map': registry.npmmirror.com/@uiw/react-baidu-map-map/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-utils': registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.npmmirror.com/@uiw/react-baidu-map-require-script/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-gPSWTw27V7LdMgpoqZ4EOjgnSwufukRV1k38jasQ8n0wjh9JClrxD3AY0bY+9TA4tQ/bpTIY12cp2Pe0WMXpQw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-require-script/-/react-baidu-map-require-script-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-require-script/2.0.8
+    name: '@uiw/react-baidu-map-require-script'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-map': registry.npmmirror.com/@uiw/react-baidu-map-map/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-utils': registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.npmmirror.com/@uiw/react-baidu-map-scale-control/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-o9ojZuGbxc6q3B2YzMJjpV4fCSmALJ3zm3oVCa0Tk/KAW2Ho94AVYCREAlMPU4rrOqOsWG+oIlgad0xu7Xg4EQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-scale-control/-/react-baidu-map-scale-control-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-scale-control/2.0.8
+    name: '@uiw/react-baidu-map-scale-control'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-map': registry.npmmirror.com/@uiw/react-baidu-map-map/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-utils': registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.npmmirror.com/@uiw/react-baidu-map-tile-layer/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-1bpvzHd13u+IQ0mIYs7ORXkIfVo6pRogfQLFSgx09ZUffw1xqPeQdrct3a/GFnYV/Mr8J2AN5wkhRnipO5WZbQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-tile-layer/-/react-baidu-map-tile-layer-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-tile-layer/2.0.8
+    name: '@uiw/react-baidu-map-tile-layer'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-map': registry.npmmirror.com/@uiw/react-baidu-map-map/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-utils': registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.npmmirror.com/@uiw/react-baidu-map-type-control/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-nE1F4Cl6kYNfWuIcVGDRQGGeczLzrnmVYSxrozyOSYUijM+hBfgt3E+DkVOcI1B3wL83XO9iumb4OWi0mQlOwA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-type-control/-/react-baidu-map-type-control-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-type-control/2.0.8
+    name: '@uiw/react-baidu-map-type-control'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-map': registry.npmmirror.com/@uiw/react-baidu-map-map/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-utils': registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.npmmirror.com/@uiw/react-baidu-map-types/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-f8/BdMZh15ET29lqW9SrInGwJO/FLvqnQiFcbgODVz+YQ73zMKSztBDk0ExDS+njtPq7ouat+80WdnsVzTDLGA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-types/-/react-baidu-map-types-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-types/2.0.8
+    name: '@uiw/react-baidu-map-types'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+
+  registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-SVSEdEIQp/zJFQd0YmqJSRgO6Rfl7a//fuWSMVutX/idZEEljMk0PxB3sk/tey3lEY9Oubx1ms5S64bji7j+Ow==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-utils/-/react-baidu-map-utils-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8
+    name: '@uiw/react-baidu-map-utils'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-types': registry.npmmirror.com/@uiw/react-baidu-map-types/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.npmmirror.com/@uiw/react-baidu-map-with-map/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-4FYR615YPo0ziVdcZs7sjSApNyRf6//LCmRT1IOO66Fq1TY4hs5cax6NevtiRrIsS4eZDa/+DwbGNH4r5hCJng==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map-with-map/-/react-baidu-map-with-map-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map-with-map/2.0.8
+    name: '@uiw/react-baidu-map-with-map'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-map': registry.npmmirror.com/@uiw/react-baidu-map-map/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.npmmirror.com/@uiw/react-baidu-map/2.0.8_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-MfoMHvSNfRhJM9lnI+fRGmBSRwq8dNn/FOmcfjPuPvnkatFTb3x7ZBIcg3bnwsL75FJRYE3fPn4nyIQmtF9VaQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@uiw/react-baidu-map/-/react-baidu-map-2.0.8.tgz}
+    id: registry.npmmirror.com/@uiw/react-baidu-map/2.0.8
+    name: '@uiw/react-baidu-map'
+    version: 2.0.8
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.7
+      '@uiw/react-baidu-map-api-loader': registry.npmmirror.com/@uiw/react-baidu-map-api-loader/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-canvas-layer': registry.npmmirror.com/@uiw/react-baidu-map-canvas-layer/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-circle': registry.npmmirror.com/@uiw/react-baidu-map-circle/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-control': registry.npmmirror.com/@uiw/react-baidu-map-control/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-copyright-control': registry.npmmirror.com/@uiw/react-baidu-map-copyright-control/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-curve-line': registry.npmmirror.com/@uiw/react-baidu-map-curve-line/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-custom-overlay': registry.npmmirror.com/@uiw/react-baidu-map-custom-overlay/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-drawing-manager': registry.npmmirror.com/@uiw/react-baidu-map-drawing-manager/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-geolocation-control': registry.npmmirror.com/@uiw/react-baidu-map-geolocation-control/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-ground-overlay': registry.npmmirror.com/@uiw/react-baidu-map-ground-overlay/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-info-window': registry.npmmirror.com/@uiw/react-baidu-map-info-window/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-label': registry.npmmirror.com/@uiw/react-baidu-map-label/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-map': registry.npmmirror.com/@uiw/react-baidu-map-map/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-marker': registry.npmmirror.com/@uiw/react-baidu-map-marker/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-navigation-control': registry.npmmirror.com/@uiw/react-baidu-map-navigation-control/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-overview-map-control': registry.npmmirror.com/@uiw/react-baidu-map-overview-map-control/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-panorama-control': registry.npmmirror.com/@uiw/react-baidu-map-panorama-control/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-point-collection': registry.npmmirror.com/@uiw/react-baidu-map-point-collection/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-polygon': registry.npmmirror.com/@uiw/react-baidu-map-polygon/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-polyline': registry.npmmirror.com/@uiw/react-baidu-map-polyline/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-require-script': registry.npmmirror.com/@uiw/react-baidu-map-require-script/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-scale-control': registry.npmmirror.com/@uiw/react-baidu-map-scale-control/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-tile-layer': registry.npmmirror.com/@uiw/react-baidu-map-tile-layer/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-type-control': registry.npmmirror.com/@uiw/react-baidu-map-type-control/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-types': registry.npmmirror.com/@uiw/react-baidu-map-types/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-utils': registry.npmmirror.com/@uiw/react-baidu-map-utils/2.0.8_react-dom@17.0.2+react@17.0.2
+      '@uiw/react-baidu-map-with-map': registry.npmmirror.com/@uiw/react-baidu-map-with-map/2.0.8_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
 
   registry.npmmirror.com/@use-gesture/core/10.2.6:
     resolution: {integrity: sha512-+GpVSEoCLv1OeZ+qgAV+tLUKit1LKgKO3PgIiEVZqNr4A/YTXzbC1unlThpfzwyj5Dx22UxHDh0UfgRrQ9Lb1w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@use-gesture/core/-/core-10.2.6.tgz}

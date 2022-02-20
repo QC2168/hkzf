@@ -70,7 +70,7 @@ export default () => {
     useMount(() => {
         const code = getHouseCode(location.pathname);
         setHousesRecord(housesRecord)
-        // 请求对于房屋的数据
+        // 请求房屋的数据
         getHousesData(code);
 
 
