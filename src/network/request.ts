@@ -31,21 +31,8 @@ export default class Api {
         this.instance.interceptors.response.use(this.interceptor.responseInterceptor, this.interceptor?.responseInterceptorErr);
     }
 
-    // request<Data = any>(config: AxiosRequestConfig<Data>):Promise<Data> {
-    //    return this.instance.request<ResponseDataType<Data>>(config);
-    // }
     //加入泛型限定，返回数据类型为T，
     async request<T>(config: AxiosRequestConfig<T>): Promise<T> {
         return this.instance.request<ResponseDataType, T>(config)
-        // return new Promise<T>((resolve, reject) => {
-        //     this.instance
-        //         .request<ResponseDataType, T>(config)
-        //         .then((res:T) => {
-        //             resolve(res);
-        //         })
-        //         .catch((err) => {
-        //             reject(err);
-        //         });
-        // });
     }
 }

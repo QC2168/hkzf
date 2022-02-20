@@ -6,12 +6,13 @@ import {
     NewsDataType,
     HousesListType,
     ConditionType,
-    HousesItemDetailType, HousesMapItemType
+    HousesItemDetailType, HousesMapItemType, LoginType, TokenType
 } from '../types';
 import {AxiosRequestConfig} from 'axios';
 import responseInterceptor from '../Interceptors/responseInterceptor';
 import requestInterceptor from '../Interceptors/requestInterceptor';
 import {BASE_URL} from '../../utils';
+import {LogType} from 'vite';
 
 const cfg: AxiosRequestConfig = {
     baseURL: BASE_URL,
@@ -122,6 +123,17 @@ export const getMapHouses=(housesCode:string)=>{
         url:'/area/map',
         params:{
             id:housesCode
+        }
+    })
+}
+
+export const login=({username,password}:LoginType)=>{
+    return ApiInstance.request<TokenType>({
+        url:'/user/login',
+        method:'POST',
+        data:{
+            username,
+            password
         }
     })
 }

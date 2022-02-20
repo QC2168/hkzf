@@ -9,7 +9,6 @@ import Profile from './pages/Profile';
 import TabBar from './components/TabBar';
 import Login from './pages/Login';
 import './App.less';
-import {atom} from 'jotai';
 import {
     PieOutline,
     SearchOutline,
@@ -17,8 +16,6 @@ import {
     UserOutline,
 } from 'antd-mobile-icons';
 import {useMount} from 'react-use';
-import {useAtom} from 'jotai';
-import {cityAtom, countAtom} from './atom';
 
 const navs = [
     {

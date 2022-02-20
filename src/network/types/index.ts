@@ -122,3 +122,12 @@ export interface HousesMapItemType{
     label:string
     value:string
 }
+
+// 登录
+export interface LoginType {
+    username: string;
+    password: string;
+}
+export interface TokenType{
+    token:string
+}
