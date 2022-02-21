@@ -20,6 +20,9 @@ export default () => {
         list: []
     });
     const [condition, setCondition] = useState<ColumnsType | null>(null);
+    const getParams = (params: {}) => {
+        getHouses(params)
+    };
     // 渲染所选值
     const getConditionData = async () => {
         const res = await getCondition(city.cityID);
@@ -42,15 +45,15 @@ export default () => {
         getConditionData();
     });
 
-    const getHouses = async () => {
-        const res = await getHousesList(city.cityID);
+    const getHouses = async (params:{}={}) => {
+        const res = await getHousesList(city.cityID,params);
         setHouses(res);
     };
 
-const toDetail=(code:string):void=>{
-    console.log(code);
-    navigate(`/detail/${code}`)
-    }
+    const toDetail = (code: string): void => {
+        navigate(`/detail/${code}`);
+    };
+
     function _noRowsRenderer() {
         return <Empty
             style={{padding: '64px 0'}}
@@ -62,10 +65,12 @@ const toDetail=(code:string):void=>{
     function _rowRenderer({key, index, style}: ListRowProps) {
         const house: HousesItemType = houses.list[index];
         return (
-            house?
-            <HouseItem
-                key={key} style={style} title={house.title} houseImg={house.houseImg} tags={house.tags} desc={house.desc}
-                       price={house.price} houseCode={house.houseCode}  onClick={()=>toDetail(house.houseCode)}/>:<div>加载中</div>
+            house ?
+                <HouseItem
+                    key={key} style={style} title={house.title} houseImg={house.houseImg} tags={house.tags}
+                    desc={house.desc}
+                    price={house.price} houseCode={house.houseCode} onClick={() => toDetail(house.houseCode)}/> :
+                <div>加载中</div>
         );
 
     }
@@ -73,7 +78,7 @@ const toDetail=(code:string):void=>{
     return (
         <div className="housesList">
             {
-                condition !== null ? <Filter {...condition} /> : ''
+                condition !== null ? <Filter FColumns={condition} change={getParams}/> : ''
             }
             <WindowScroller>
                 {
@@ -82,7 +87,7 @@ const toDetail=(code:string):void=>{
                             {({width}) => (
                                 // 高度减去90是筛选框的高度+tabbar高度
                                 <List
-                                    height={height-90}
+                                    height={height - 90}
                                     rowCount={houses.list.length}
                                     rowHeight={110}
                                     noRowsRenderer={_noRowsRenderer}

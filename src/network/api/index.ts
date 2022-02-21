@@ -52,12 +52,36 @@ export const getNews = () => {
     });
 };
 
-export const getHousesList = (cityId: string) => {
+export const getHousesList = (cityId: string, params: paramsType = {}) => {
+    const {
+        area,
+        subway,
+        rentType,
+        price,
+        more,
+        roomType,
+        oriented,
+        characteristic,
+        floor,
+        start,
+        end
+    } = params;
     return ApiInstance.request<HousesListType>({
         url: '/houses',
         method: 'get',
         params: {
-            cityId
+            cityId,
+            area,
+            subway,
+            rentType,
+            price,
+            more,
+            roomType,
+            oriented,
+            characteristic,
+            floor,
+            start,
+            end
         }
     });
 };
@@ -76,7 +100,7 @@ interface paramsType {
     end?: string;
 }
 
-export const getCondition = (cityId: string, params: paramsType={}) => {
+export const getCondition = (cityId: string, params: paramsType = {}) => {
     const {
         area = '',
         subway = '',
@@ -110,30 +134,30 @@ export const getCondition = (cityId: string, params: paramsType={}) => {
     });
 };
 
-export const getHousesDetail=(housesCode:string)=>{
+export const getHousesDetail = (housesCode: string) => {
     return ApiInstance.request<HousesItemDetailType>({
-        url:`/houses/${housesCode}`,
-        method:'get'
-    })
-}
+        url: `/houses/${housesCode}`,
+        method: 'get'
+    });
+};
 // 地图找房
 
-export const getMapHouses=(housesCode:string)=>{
+export const getMapHouses = (housesCode: string) => {
     return ApiInstance.request<HousesMapItemType[]>({
-        url:'/area/map',
-        params:{
-            id:housesCode
+        url: '/area/map',
+        params: {
+            id: housesCode
         }
-    })
-}
+    });
+};
 
-export const login=({username,password}:LoginType)=>{
+export const login = ({username, password}: LoginType) => {
     return ApiInstance.request<TokenType>({
-        url:'/user/login',
-        method:'POST',
-        data:{
+        url: '/user/login',
+        method: 'POST',
+        data: {
             username,
             password
         }
-    })
-}
+    });
+};

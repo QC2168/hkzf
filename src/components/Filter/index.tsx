@@ -5,6 +5,7 @@ import {CascadePickerView} from 'antd-mobile';
 import Footer from './Footer';
 import {useMount} from 'react-use';
 import {TitleListType, ColumnsType, SelectStatusType, SelectedStatusValType} from './types';
+import {ConditionType} from '../../network/types';
 
 const titleList: TitleListType[] = [
     {title: '区域', type: 'area'},
@@ -12,8 +13,11 @@ const titleList: TitleListType[] = [
     {title: '租金', type: 'price'},
     {title: '筛选', type: 'more'},
 ];
-
-export default (FColumns: ColumnsType) => {
+interface PropsTypes{
+    FColumns: ColumnsType
+    change:(params:{})=>void
+}
+export default ({FColumns,change}:PropsTypes) => {
     const [selectStatus, setSelectStatus] = useState<SelectStatusType>({
         area: false,
         rentType: false,
@@ -63,6 +67,7 @@ export default (FColumns: ColumnsType) => {
         //    发送请求
         console.log(selectedStatusVal);
         //    保存数据
+        change(selectedStatusVal)
         cancel();
     };
 
