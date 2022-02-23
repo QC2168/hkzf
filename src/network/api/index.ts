@@ -6,7 +6,7 @@ import {
     NewsDataType,
     HousesListType,
     ConditionType,
-    HousesItemDetailType, HousesMapItemType, LoginType, TokenType
+    HousesItemDetailType, HousesMapItemType, LoginType, TokenType, FavoritesType, HousesItemType
 } from '../types';
 import {AxiosRequestConfig} from 'axios';
 import responseInterceptor from '../Interceptors/responseInterceptor';
@@ -161,3 +161,18 @@ export const login = ({username, password}: LoginType) => {
         }
     });
 };
+
+// 收藏商品
+export const favorites=(id:string)=>{
+    return ApiInstance.request<unknown>({
+        url:`/user/favorites/${id}`,
+        method:'POST'
+    })
+
+}// 获取收藏商品
+export const favoritesHouses=()=>{
+    return ApiInstance.request<HousesItemType[]>({
+        url:`/user/favorites`,
+    })
+
+}

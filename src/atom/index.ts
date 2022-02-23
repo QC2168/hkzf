@@ -1,5 +1,6 @@
 import {atom} from 'jotai';
 import {cityType, HousesRecordType, UserStoreType} from './types';
+import {SetToken} from "../utils";
 
 export const cityAtom = atom<cityType>({
     cityName: '广州市',
@@ -26,5 +27,9 @@ export const addHousesFavoritesAtom = atom(
 export const userStoreAtom = atom<UserStoreType>({username: '', token: ''});
 export const updateUserStoreAtom = atom(
     (get) => get(userStoreAtom),
-    (get, set, userStore:UserStoreType) => set(userStoreAtom, userStore)
+    (get, set, userStore:UserStoreType) => {
+        // 将token放到本地存储
+        SetToken(userStore.token)
+        set(userStoreAtom, userStore)
+    }
 );

@@ -131,3 +131,8 @@ export interface LoginType {
 export interface TokenType{
     token:string
 }
+
+// 收藏
+export interface FavoritesType extends TokenType{
+    id:string
+}

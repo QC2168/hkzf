@@ -3,7 +3,7 @@ import {useLocation} from 'react-router-dom';
 import React, {useEffect, useState} from 'react';
 import NavBar from '../../components/NavBar';
 import Ball from '../../components/Ball';
-import {getHousesDetail} from '../../network/api';
+import {favorites, getHousesDetail} from '../../network/api';
 import {HousesItemDetailType, SwiperDataType} from '../../network/types';
 import {Divider, Grid, Skeleton, Swiper, Tag, Toast} from 'antd-mobile';
 import styles from './index.module.less';
@@ -49,7 +49,9 @@ export default () => {
         const housesData = await getHousesDetail(HouseCode);
         setHousesData(housesData);
     };
-    const collect=(housesCode:string)=>{
+    const collect=async (housesCode:string)=>{
+        // 发送收藏的网络请求
+        const res= await favorites(housesCode)
         const housesRecord: HousesRecordType = {
             value: housesCode,
             time: Date.now()

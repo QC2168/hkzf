@@ -16,6 +16,7 @@ import {
     UserOutline,
 } from 'antd-mobile-icons';
 import {useMount} from 'react-use';
+import Record from "./pages/Record";
 
 const navs = [
     {
@@ -60,6 +61,7 @@ export default () => {
                 <Route path="/Profile" element={<Profile/>}/>
                 <Route path="/Login" element={<Login/>}/>
                 <Route path="/Map" element={<Map/>}/>
+                <Route path="/Record" element={<Record/>}/>
                 <Route path="/Detail/:id" element={<Detail/>}/>
             </Routes>
             {showTabbarPages.includes(location.pathname) ? <TabBar tabs={navs}/> : ''}
