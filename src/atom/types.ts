@@ -8,3 +8,8 @@ export interface HousesRecordType{
     time:number
 }
 
+// 用户数据
+export interface UserStoreType{
+    username:string
+    token:string
+}

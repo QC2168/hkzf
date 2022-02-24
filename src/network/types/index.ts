@@ -108,10 +108,10 @@ export interface ConditionType {
     area: areaType,
     characteristic: characteristicType[],
     floor: floorType[],
-    oriente: orienteType[],
+    oriented: orienteType[],
     price: priceType[],
     rentType: rentType[],
-    room: roomType[],
+    roomType: roomType[],
     subway: subwayType,
 }
 

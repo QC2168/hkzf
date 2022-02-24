@@ -14,3 +14,8 @@ export const GetToken = (): string => {
     }
 
 }
+export const addLocalStorage=<T>(name:string,data:T):boolean=>{
+    const value=JSON.stringify(data)
+    localStorage.setItem(name, value)
+    return true
+}

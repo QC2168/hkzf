@@ -152,7 +152,7 @@ export const getMapHouses = (housesCode: string) => {
 };
 
 export const login = ({username, password}: LoginType) => {
-    return ApiInstance.request<TokenType>({
+    return ApiInstance.request<LoginType>({
         url: '/user/login',
         method: 'POST',
         data: {
@@ -163,16 +163,23 @@ export const login = ({username, password}: LoginType) => {
 };
 
 // 收藏商品
-export const favorites=(id:string)=>{
-    return ApiInstance.request<unknown>({
-        url:`/user/favorites/${id}`,
-        method:'POST'
+export  const favorites=(id: string, query :boolean= false)=>{
+    return ApiInstance.request<null | { isFavorite: boolean }>({
+        url: `/user/favorites/${id}`,
+        method: query ? 'GET' : 'POST'
     })
+}
 
-}// 获取收藏商品
-export const favoritesHouses=()=>{
+// 获取收藏商品
+export const favoritesHouses = () => {
     return ApiInstance.request<HousesItemType[]>({
-        url:`/user/favorites`,
+        url: `/user/favorites`,
     })
+}
 
+// 获取房屋查询数据
+export const housesParams=()=>{
+    return ApiInstance.request<unknown>({
+        url:'/houses/params'
+    })
 }

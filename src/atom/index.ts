@@ -1,6 +1,6 @@
 import {atom} from 'jotai';
 import {cityType, HousesRecordType, UserStoreType} from './types';
-import {SetToken} from "../utils";
+import {addLocalStorage, SetToken} from "../utils";
 
 export const cityAtom = atom<cityType>({
     cityName: '广州市',
@@ -8,20 +8,22 @@ export const cityAtom = atom<cityType>({
 });
 export const updateCityAtom = atom(
     (get) => get(cityAtom),
-    (get, set, city: cityType) => set(cityAtom, city)
+    (get, set, city: cityType) => {
+        addLocalStorage<cityType>('cityAtom',city)
+        set(cityAtom, city)
+    }
 );
 
 export const housesRecordsAtom = atom<HousesRecordType[]>([]);
 export const addHousesRecordsAtom = atom(
     (get) => get(housesRecordsAtom),
-    (get, set, HousesRecord: HousesRecordType) => set(housesRecordsAtom, [...get(housesRecordsAtom), HousesRecord])
+    (get, set, HousesRecord: HousesRecordType) => {
+        const newArr:HousesRecordType[]=[...get(housesRecordsAtom), HousesRecord]
+            addLocalStorage<HousesRecordType[]>('cityAtom',newArr)
+        set(housesRecordsAtom, newArr)
+    }
 );
 
-export const housesFavoritesAtom = atom<HousesRecordType[]>([]);
-export const addHousesFavoritesAtom = atom(
-    (get) => get(housesFavoritesAtom),
-    (get, set, housesFavorite: HousesRecordType) => set(housesFavoritesAtom, [...get(housesFavoritesAtom), housesFavorite])
-);
 
 // 登录数据
 export const userStoreAtom = atom<UserStoreType>({username: '', token: ''});

@@ -10,7 +10,7 @@ import {
 import classnames from 'classnames';
 import {useMount} from 'react-use';
 import {atom, useAtom} from 'jotai';
-import {addHousesFavoritesAtom, housesFavoritesAtom, housesRecordsAtom, userStoreAtom} from '../../atom';
+import { housesRecordsAtom, userStoreAtom} from '../../atom';
 // 默认头像
 const DEFAULT_AVATAR = `${BASE_URL}/img/profile/avatar.png`;
 const menus = [
@@ -31,7 +31,6 @@ const menus = [
 ];
 export default () => {
     const [housesRecord]=useAtom(housesRecordsAtom)
-    const [housesFavorites]=useAtom(housesFavoritesAtom)
     const [{username}]=useAtom(userStoreAtom)
 useMount(()=>{
 //    获取浏览记录数据
@@ -52,7 +51,7 @@ useMount(()=>{
             {/*数据显示*/}
             <div className={styles.dataCard}>
                 <div className={[styles.dataCardItem, styles.fc].join(' ')}>
-                    <div>{housesFavorites.length}</div>
+                    <div>{[].length}</div>
                     <div>我的收藏</div>
                 </div>
                 <div className={classnames(styles.dataCardItem, styles.fc)}>

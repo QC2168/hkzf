@@ -9,7 +9,7 @@ import {Divider, Grid, Skeleton, Swiper, Tag, Toast} from 'antd-mobile';
 import styles from './index.module.less';
 import {BASE_URL} from '../../utils';
 import {tagColorType} from '../../components/HouseItem';
-import {addHousesFavoritesAtom, addHousesRecordsAtom} from '../../atom';
+import {addHousesRecordsAtom} from '../../atom';
 import {HousesRecordType} from '../../atom/types';
 import {useAtom} from 'jotai';
 import {HeartFill, HeartOutline} from 'antd-mobile-icons';
@@ -43,26 +43,30 @@ export default () => {
     let location = useLocation();
     const [housesData, setHousesData] = useState<HousesItemDetailType>();
     const [housesRecord, setHousesRecord] = useState<HousesRecordType>();
+    const [favoriteStatus, setFavoriteStatus] = useState<boolean>(false);
     const [, addHousesRecord] = useAtom(addHousesRecordsAtom);
-    const [HousesFavorites, addHousesFavorites] = useAtom(addHousesFavoritesAtom);
     const getHousesData = async (HouseCode: string) => {
         const housesData = await getHousesDetail(HouseCode);
         setHousesData(housesData);
     };
-    const collect=async (housesCode:string)=>{
+    const collect = async (housesCode: string) => {
         // 发送收藏的网络请求
-        const res= await favorites(housesCode)
+        const res = await favorites(housesCode)
         const housesRecord: HousesRecordType = {
             value: housesCode,
             time: Date.now()
         };
-        addHousesFavorites(housesRecord);
         Toast.show({
             content: '已收藏',
-            icon: <HeartFill style={{'color': 'pink'}} />,
+            icon: <HeartFill style={{'color': 'pink'}}/>,
         })
     }
-    const record=(housesCode:string)=>{
+    const isCollect = async (housesCode: string) => {
+        // @ts-ignore
+        const {isFavorite} = await favorites(housesCode, true)
+        setFavoriteStatus(isFavorite)
+    }
+    const record = (housesCode: string) => {
         const housesRecord: HousesRecordType = {
             value: housesCode,
             time: Date.now()
@@ -74,27 +78,25 @@ export default () => {
         setHousesRecord(housesRecord)
         // 请求房屋的数据
         getHousesData(code);
-
-
+        // 判断是否已经收藏
+        isCollect(code)
     });
-    useEffect(()=>{
+    useEffect(() => {
         console.log('effect');
         // 加入浏览记录
-        if(housesData) {
+        if (housesData) {
             record(housesData.houseCode)
         }
-    },[housesData])
+    }, [housesData])
 
-    const isFavorite=(houseCode:string)=>{
-        for (const item of HousesFavorites){
-            if(item.value===houseCode) return <HeartFill style={{'color': 'pink'}} />;
-        }
-        return <HeartOutline style={{'color': 'pink'}} />
+    const isFavorite = (houseCode: string) => {
+
+        return favoriteStatus ? <HeartFill style={{'color': 'pink'}}/> : <HeartOutline style={{'color': 'pink'}}/>
     }
     if (housesData) {
         return (
             <>
-                <Ball styles={{'left': '80%','top':'88%'}} onClick={()=>collect(housesData.houseCode)}>
+                <Ball styles={{'left': '80%', 'top': '88%'}} onClick={() => collect(housesData.houseCode)}>
                     {isFavorite(housesData.houseCode)}
                 </Ball>
                 <NavBar>房屋详情</NavBar>
