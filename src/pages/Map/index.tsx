@@ -50,9 +50,6 @@ export default () => {
                                         position={{lng: Number(item.coord.longitude), lat: Number(item.coord.latitude)}}
                                         visiable={curDisplayMode==='region'}
                                     >
-                                        <button onClick={()=>changeZoom(13,item.value)}>
-                                            123
-                                        </button>
                                         <div className={styles.bubble} onClick={()=>changeZoom(13,item.value)}>
                                             <div className={styles.name}>{item.label}</div>
                                             <div className={styles.count}>{item.count} 套</div>
@@ -61,7 +58,6 @@ export default () => {
                                 );
                             })
                         }
-
                     </Map>
                 </APILoader>
             </div>

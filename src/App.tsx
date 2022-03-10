@@ -7,6 +7,7 @@ import Map from './pages/Map';
 import Detail from './pages/Detail';
 import Profile from './pages/Profile';
 import TabBar from './components/TabBar';
+import Register from './pages/Register';
 import Login from './pages/Login';
 import './App.less';
 import {
@@ -61,6 +62,7 @@ export default () => {
                 <Route path="/News" element={<News/>}/>
                 <Route path="/Profile" element={<Profile/>}/>
                 <Route path="/Login" element={<Login/>}/>
+                <Route path="/Register" element={<Register/>}/>
                 <Route path="/Map" element={<Map/>}/>
                 <Route path="/Record" element={<Record/>}/>
                 <Route path="/Detail/:id" element={<Detail/>}/>

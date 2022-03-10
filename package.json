@@ -9,7 +9,6 @@
     "commit": "cz"
   },
   "dependencies": {
-    "?": "link:/?",
     "@uiw/react-baidu-map": "^2.0.8",
     "antd-mobile": "^5.0.0-rc.26",
     "antd-mobile-icons": "^0.2.2",

@@ -100,36 +100,12 @@ interface paramsType {
     end?: string;
 }
 
-export const getCondition = (cityId: string, params: paramsType = {}) => {
-    const {
-        area = '',
-        subway = '',
-        rentType = '',
-        price = '',
-        more = '',
-        roomType = '',
-        oriented = '',
-        characteristic = '',
-        floor = '',
-        start = '',
-        end = ''
-    } = params;
+export const getCondition = (id: string) => {
     return ApiInstance.request<ConditionType>({
         url: '/houses/condition',
         method: 'get',
         params: {
-            id: cityId,
-            area,
-            subway,
-            rentType,
-            price,
-            more,
-            roomType,
-            oriented,
-            characteristic,
-            floor,
-            start,
-            end
+            id,
         }
     });
 };
@@ -151,8 +127,18 @@ export const getMapHouses = (housesCode: string) => {
     });
 };
 
+export const register = ({username, password}: LoginType) => {
+    return ApiInstance.request<TokenType>({
+        url: '/user/registered',
+        method: 'POST',
+        data: {
+            username,
+            password
+        }
+    });
+};
 export const login = ({username, password}: LoginType) => {
-    return ApiInstance.request<LoginType>({
+    return ApiInstance.request<TokenType>({
         url: '/user/login',
         method: 'POST',
         data: {

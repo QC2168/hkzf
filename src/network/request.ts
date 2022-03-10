@@ -32,7 +32,7 @@ export default class Api {
     }
 
     //加入泛型限定，返回数据类型为T，
-    async request<T>(config: AxiosRequestConfig<T>): Promise<T> {
+    async request<T>(config: AxiosRequestConfig): Promise<T> {
         return this.instance.request<ResponseDataType, T>(config)
     }
 }
