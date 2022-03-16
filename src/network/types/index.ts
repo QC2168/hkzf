@@ -31,7 +31,7 @@ export interface HousesItemType {
     desc: string
     houseCode: string
     houseImg: string|string[]
-    price: number
+    price: number|string
     tags: string[]
     title: string,
     style?: React.CSSProperties
@@ -49,6 +49,17 @@ export interface HousesItemDetailType extends HousesItemType {
     supporting: string[]
 }
 
+// 发布房屋信息
+export interface HousesItemReleaseType extends HousesItemType{
+    description: string
+    oriented:string
+    supporting:string
+    roomType:string
+    size:string
+    community:string
+    floor: string
+    houseImge:string[]
+}
 export interface HousesListType {
     count: number;
     list: HousesItemType[] | [];

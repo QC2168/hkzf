@@ -6,7 +6,7 @@ import {
     NewsDataType,
     HousesListType,
     ConditionType,
-    HousesItemDetailType, HousesMapItemType, LoginType, TokenType, FavoritesType, HousesItemType
+    HousesItemDetailType, HousesMapItemType, LoginType, TokenType, FavoritesType, HousesItemType, HousesItemReleaseType
 } from '../types';
 import {AxiosRequestConfig} from 'axios';
 import responseInterceptor from '../Interceptors/responseInterceptor';
@@ -168,4 +168,29 @@ export const housesParams=()=>{
     return ApiInstance.request<unknown>({
         url:'/houses/params'
     })
+}
+
+// 上传图片
+export const housesImageUpload=(file:File)=>{
+    let data=new FormData()
+    data.append('file',file)
+    return ApiInstance.request<[string]>({
+        url:'/houses/image',
+        method:'post',
+        headers:{
+          'Content-Type':'multipart/form-data'
+        },
+        data
+    })
+}
+
+// 发布房屋
+export const releaseHouses=({title,description,houseImg,oriented,supporting,price,roomType,size,floor,community}:HousesItemReleaseType)=>{
+return ApiInstance.request<unknown>({
+    url:'/user/houses',
+    method:'post',
+    data:{
+        title,description,houseImg,oriented,supporting,price,roomType,size,floor,community
+    }
+})
 }
