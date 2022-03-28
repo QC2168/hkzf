@@ -40,7 +40,7 @@ export interface HousesItemType {
 
 export interface HousesItemDetailType extends HousesItemType {
     community: string
-    coord: { latitude: string, longitude: string }
+    coord: { latitude: number, longitude: number }
     description: string
     floor: string
     oriented: string[]

@@ -5,7 +5,7 @@ import NavBar from '../../components/NavBar';
 import Ball from '../../components/Ball';
 import {favorites, getHousesDetail} from '../../network/api';
 import {HousesItemDetailType, SwiperDataType} from '../../network/types';
-import {Divider, Grid, Skeleton, Swiper, Tag, Toast} from 'antd-mobile';
+import {Divider, Grid, Rate, Skeleton, Swiper, Tag, Toast} from 'antd-mobile';
 import styles from './index.module.less';
 import {BASE_URL} from '../../utils';
 import {tagColorType} from '../../components/HouseItem';
@@ -13,6 +13,20 @@ import {addHousesRecordsAtom} from '../../atom';
 import {HousesRecordType} from '../../atom/types';
 import {useAtom} from 'jotai';
 import {HeartFill, HeartOutline} from 'antd-mobile-icons';
+import {Map, APILoader, Marker} from '@uiw/react-baidu-map';
+
+const mapFC = (lng: number, lat: number) => {
+    return (
+        <div style={{width: '100%', height: '200px'}}>
+            <APILoader akay="PrjHqT7EGEQtKhy2GiMY8VHgUI3FuahR">
+                <Map center={{lng, lat}}>
+                    <Marker position={{lng, lat}}/>
+                </Map>
+            </APILoader>
+        </div>)
+
+}
+
 
 export const tagColor: tagColorType[] = ['default', 'primary', 'success', 'warning', 'danger'];
 const getHouseCode = (url: string): string => {
@@ -138,11 +152,22 @@ export default () => {
                     <Divider>所在小区</Divider>
                     <div>{housesData.community}</div>
                     <Divider>房间配套</Divider>
-                    <div>{housesData.description}</div>
+                    <div>
+                        <Grid columns={3} gap={8}>
+                            {housesData.supporting.map((item) => {
+                                return <Grid.Item>
+                                    <div className={styles['grid-demo-item-block']}
+                                         style={{textAlign: 'center', margin: '5px 0'}}>{item}</div>
+                                </Grid.Item>
+                            })}
+                        </Grid>
+                    </div>
                     <Divider>房屋概况</Divider>
                     <div>{housesData.description}</div>
                     <Divider>地图位置</Divider>
-                    <div>{housesData.description}</div>
+                    <div>{mapFC(housesData.coord.longitude, housesData.coord.latitude)}</div>
+                    <Divider>房主积累评分</Divider>
+                    <div><Rate readOnly value={5}/></div>
                 </div>
 
             </>
