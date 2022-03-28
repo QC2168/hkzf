@@ -1,46 +1,102 @@
-import React, {FC, useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import {
     Form,
     Input,
     Button,
     Dialog,
     Selector,
-    CascadePickerView, ImageUploader,
+    CascadePickerView, ImageUploader, Toast,
 } from 'antd-mobile'
 import NavBar from "../../components/NavBar";
 import {useMount} from "react-use";
-import {getCondition} from "../../network/api";
+import {getCondition, housesImageUpload, releaseHouses} from "../../network/api";
 import {useAtom} from "jotai";
 import {cityAtom} from "../../atom";
-import {ConditionType} from "../../network/types";
+import {ConditionType, HousesItemReleaseType} from "../../network/types";
 import styles from './index.module.less'
 import {ImageUploadItem} from "antd-mobile/es/components/image-uploader";
+import {BASE_URL} from "../../utils";
+import {useNavigate} from "react-router-dom";
 
-async function uploadImage() {
-    console.log('调用的图片上次')
-}
 
-// 上传状态
-const UploadStatus = () => {
-    const [fileList, setFileList] = useState<ImageUploadItem[]>([])
-
-    return (
-        <ImageUploader
-            value={fileList}
-            onChange={setFileList}
-            upload={uploadImage as any}
-        />
-    )
-}
 export default () => {
+    let navigate = useNavigate();
     const [{cityID}] = useAtom(cityAtom)
     const [condition, setCondition] = useState<ConditionType | undefined>()
+    const [fileList, setFileList] = useState<ImageUploadItem[]>([])
+    const [imgUrlList, setImgUrlList] = useState<string[]>([])
+    // 上传状态
+    const UploadStatus = () => {
+        return (
+            <ImageUploader
+                value={fileList}
+                onChange={setFileList}
+                upload={uploadImage as any}
+            />
+        )
+    }
+
+    async function uploadImage(file: File) {
+        console.log('调用的图片上床')
+        const res = await housesImageUpload(file)
+        let url = BASE_URL + res[0]
+        setImgUrlList([...imgUrlList, url])
+        return {
+            url
+        }
+    }
+
     useMount(() => {
         getCondition(cityID).then(res => setCondition(res))
     })
+    const getLastPar = (arr: string[]): string => {
+        let areaVal: string = '';
+        if (arr[2] === 'null') {
+            areaVal = arr[1];
+        } else if (arr[1] === 'null') {
+            areaVal = arr[0];
+        } else if (arr[2] !== 'null') {
+            areaVal = arr[2];
+        }
+        return areaVal
+    }
+    const onFinish = async ({
+                                title,
+                                description,
+                                supporting, floor,
 
-    const onFinish = (values: any) => {
-        console.log(values)
+                                oriented,
+                                roomType,
+
+                                size,
+                                price,
+                                community
+                            }: any) => {
+
+        let data: HousesItemReleaseType = {
+            title,
+            description,
+            supporting: supporting[0], floor: floor[0],
+
+            oriented: oriented[0],
+            roomType: roomType[0],
+
+            size,
+            price,
+            community: getLastPar(community),
+            houseImg: imgUrlList.join('|')
+
+        }
+        // 发布房源
+        const res = await releaseHouses(data)
+        if (res === null) {
+            Toast.show({
+                icon: 'success',
+                content: '发布成功',
+            })
+            navigate('/List')
+
+        }
 
     }
     return (
@@ -68,10 +124,10 @@ export default () => {
                         >
                             <Input placeholder='请输入标题'/>
                         </Form.Item>
-                        <Form.Item name='address' label='房屋描述'>
-                            <Input placeholder='请输入地址'/>
+                        <Form.Item name='description' label='房屋描述'>
+                            <Input placeholder='请输入房屋描述'/>
                         </Form.Item>
-                        <Form.Item name='characteristic' label='设备提供'>
+                        <Form.Item name='supporting' label='设备提供'>
                             <Selector
                                 columns={3}
                                 multiple
@@ -102,10 +158,10 @@ export default () => {
                                 options={condition.roomType}
                             />
                         </Form.Item>
-                        <Form.Item name='area' label='房屋所在位置'>
+                        <Form.Item name='community' label='房屋所在位置'>
                             <CascadePickerView options={condition.area.children}/>
                         </Form.Item>
-                        <Form.Item name='square' label='平方'>
+                        <Form.Item name='size' label='平方'>
                             <Input placeholder='请输入平方'/>
                         </Form.Item>
                         <Form.Item name='price' label='租金'>
