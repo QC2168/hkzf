@@ -70,7 +70,7 @@ export default () => {
                     key={key} style={style} title={house.title} houseImg={house.houseImg} tags={house.tags}
                     desc={house.desc}
                     price={house.price} houseCode={house.houseCode} onClick={() => toDetail(house.houseCode)}/> :
-                <div>加载中</div>
+                <div>空空如也</div>
         );
 
     }
@@ -89,7 +89,7 @@ export default () => {
                                 <List
                                     height={height - 90}
                                     rowCount={houses.list.length}
-                                    rowHeight={110}
+                                    rowHeight={100}
                                     noRowsRenderer={_noRowsRenderer}
                                     rowRenderer={_rowRenderer}
                                     width={width}

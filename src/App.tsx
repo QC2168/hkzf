@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {BrowserRouter as Router, Route, Routes, useLocation} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes, useLocation, Navigate} from 'react-router-dom';
 import Home from './pages/Home';
 import List from './pages/List';
 import News from './pages/News';
@@ -19,6 +19,7 @@ import {
 import {useMount} from 'react-use';
 import Record from "./pages/Record";
 import Release from "./pages/Release";
+import {GetToken} from "./utils";
 
 const navs = [
     {
@@ -42,6 +43,15 @@ const navs = [
         key: '/Profile',
     },
 ];
+
+function RequireAuth({ children }: { children: JSX.Element }) {
+    let auth = GetToken();
+    if (!auth) {
+        return <Navigate to="/Login" replace />;
+    }
+
+    return children;
+}
 const showTabbarPages = ['/Home',
     '/List',
     '/News', '/Profile', '/'];
@@ -60,13 +70,27 @@ export default () => {
                 <Route path="/Home" element={<Home/>}/>
                 <Route path="/List" element={<List/>}/>
                 <Route path="/News" element={<News/>}/>
-                <Route path="/Profile" element={<Profile/>}/>
                 <Route path="/Login" element={<Login/>}/>
+                <Route
+                    path="/Profile"
+                    element={
+                        <RequireAuth>
+                            <Profile/>
+                        </RequireAuth>
+                    }
+                />
                 <Route path="/Register" element={<Register/>}/>
                 <Route path="/Map" element={<Map/>}/>
                 <Route path="/Record" element={<Record/>}/>
                 <Route path="/Detail/:id" element={<Detail/>}/>
-                <Route path="/Release" element={<Release/>}/>
+                <Route
+                    path="/Release"
+                    element={
+                        <RequireAuth>
+                            <Release/>
+                        </RequireAuth>
+                    }
+                />
             </Routes>
             {showTabbarPages.includes(location.pathname) ? <TabBar tabs={navs}/> : ''}
         </div>

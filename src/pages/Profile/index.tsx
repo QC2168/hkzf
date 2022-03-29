@@ -10,32 +10,37 @@ import {
 import classnames from 'classnames';
 import {useMount} from 'react-use';
 import {atom, useAtom} from 'jotai';
-import { housesRecordsAtom, userStoreAtom} from '../../atom';
+import {housesRecordsAtom, userStoreAtom} from '../../atom';
+import {useNavigate} from "react-router-dom";
 // 默认头像
 const DEFAULT_AVATAR = `${BASE_URL}/img/profile/avatar.png`;
 const menus = [
     {
-        id: 1, name: '我的收藏', iconfont: <StarOutline fontSize={24}/>, to: '/favorite',
+        id: 1, name: '我的收藏', iconfont: <StarOutline fontSize={24}/>, to: '/record?query=favorite',
     },
     {
         id: 2, name: '我的出租', iconfont: <ReceiptOutline fontSize={24}/>, to: '/rent',
     },
-    {id: 3, name: '看房记录', iconfont: <CalendarOutline fontSize={24}/>},
+    {id: 3, name: '看房记录', iconfont: <CalendarOutline fontSize={24}/>, to: '/record?query=view'},
     {
         id: 4,
-        name: '成为房主',
-        iconfont: <UserCircleOutline fontSize={24}/>,
+        name: '发布房源',
+        iconfont: <UserCircleOutline fontSize={24}/>, to: '/release'
     },
-    {id: 5, name: '个人资料', iconfont: <FileOutline fontSize={24}/>},
-    {id: 6, name: '联系我们', iconfont: <TeamOutline fontSize={24}/>},
+    {id: 5, name: '个人资料', iconfont: <FileOutline fontSize={24}/>,to: '/'},
 ];
-export default () => {
-    const [housesRecord]=useAtom(housesRecordsAtom)
-    const [{username}]=useAtom(userStoreAtom)
-useMount(()=>{
+
+export default () =>{
+    const [housesRecord] = useAtom(housesRecordsAtom)
+    const [{username}] = useAtom(userStoreAtom)
+    const navigate = useNavigate();
+    const to = (path: string) :void=> {
+        navigate(path)
+    }
+    useMount(() => {
 //    获取浏览记录数据
-    console.log(housesRecord);
-})
+        console.log(housesRecord);
+    })
     return (
         <div className={styles.Profile}>
             {/*头部 头像*/}
@@ -46,7 +51,7 @@ useMount(()=>{
                     alt="背景图"
                 />
                 <img className={styles.img} src={DEFAULT_AVATAR} alt=""/>
-                <h3 className={styles.username}>{username?username:"未登录"}</h3>
+                <h3 className={styles.username}>{username ? username : "未登录"}</h3>
             </div>
             {/*数据显示*/}
             <div className={styles.dataCard}>
@@ -64,7 +69,7 @@ useMount(()=>{
             <div className={styles.listCard}>
                 {
                     menus.map(item => {
-                        return (<div className={styles.listItem} key={item.id}>
+                        return (<div className={styles.listItem} key={item.id} onClick={() => to(item.to)}>
                             <div className={[styles.listLIcon, styles.fc].join(' ')}>
                                 {item.iconfont}
                             </div>

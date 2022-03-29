@@ -4,13 +4,19 @@ import {useState} from "react";
 import {HousesItemType} from "../../network/types";
 import {List} from "antd-mobile";
 import HouseItem from "../../components/HouseItem";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 import NavBar from "../../components/NavBar";
 import styles from './index.module.css'
+type ListType='favorite'|'view'
 export default () => {
     let navigate = useNavigate();
-    const [houses, setHouses] = useState<HousesItemType[] | []>([])
+    const [houses, setHouses] = useState<HousesItemType[]>([])
+    let [searchParams] = useSearchParams();
+    let [listType,setListType]=useState<ListType>('favorite')
     useMount(() => {
+        // 读取路由参数
+       const type:ListType=searchParams.get('query') as ListType
+        setListType(type)
         getFavoritesHouses()
     })
     const getFavoritesHouses = async () => {
@@ -23,10 +29,10 @@ export default () => {
     };
     return (
         <>
-            <NavBar>收藏记录</NavBar>
+            <NavBar>{listType==='favorite'?'收藏记录':'浏览记录'}</NavBar>
             <List className={styles.list}>
                 {houses.map(house => (
-                    <List.Item>
+                    <List.Item  key={house.houseCode}>
                         <HouseItem
                             title={house.title} houseImg={house.houseImg} tags={house.tags}
                             desc={house.desc}

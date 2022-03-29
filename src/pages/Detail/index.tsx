@@ -7,7 +7,7 @@ import {favorites, getHousesDetail} from '../../network/api';
 import {HousesItemDetailType, SwiperDataType} from '../../network/types';
 import {Divider, Grid, Rate, Skeleton, Swiper, Tag, Toast} from 'antd-mobile';
 import styles from './index.module.less';
-import {BASE_URL} from '../../utils';
+import {BASE_URL, GetToken} from '../../utils';
 import {tagColorType} from '../../components/HouseItem';
 import {addHousesRecordsAtom} from '../../atom';
 import {HousesRecordType} from '../../atom/types';
@@ -92,16 +92,14 @@ export default () => {
         setHousesRecord(housesRecord)
         // 请求房屋的数据
         getHousesData(code);
+        record(code)
         // 判断是否已经收藏
-        isCollect(code)
-    });
-    useEffect(() => {
-        console.log('effect');
-        // 加入浏览记录
-        if (housesData) {
-            record(housesData.houseCode)
+          if(GetToken()){
+            isCollect(code)
         }
-    }, [housesData])
+    });
+
+
 
     const isFavorite = (houseCode: string) => {
 

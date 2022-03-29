@@ -21,7 +21,7 @@ export default ()=>{
         {
             newsData.map((item:NewsDataType) => {
                 return (
-                    <div className={styles.newsItem}>
+                    <div className={styles.newsItem} key={item.id}>
                         <div className={styles.newsImgWrap}>
                             <img
                                 className={styles.newsItemImg}
