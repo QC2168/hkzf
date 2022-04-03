@@ -147,3 +147,9 @@ export interface TokenType{
 export interface FavoritesType extends TokenType{
     id:string
 }
+
+//获取收藏和浏览返回回来的数据
+export interface RecordCountType{
+    favoritesCount:number
+    RecordCount:number
+}

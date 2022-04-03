@@ -12,6 +12,8 @@ import {useMount} from 'react-use';
 import {atom, useAtom} from 'jotai';
 import {housesRecordsAtom, userStoreAtom} from '../../atom';
 import {useNavigate} from "react-router-dom";
+import {favoriteCount, getUserInfo} from "../../network/api";
+import {useState} from "react";
 // 默认头像
 const DEFAULT_AVATAR = `${BASE_URL}/img/profile/avatar.png`;
 const menus = [
@@ -33,13 +35,16 @@ const menus = [
 export default () =>{
     const [housesRecord] = useAtom(housesRecordsAtom)
     const [{username}] = useAtom(userStoreAtom)
+    const [count,setCount]=useState<number>(0)
     const navigate = useNavigate();
     const to = (path: string) :void=> {
         navigate(path)
     }
     useMount(() => {
-//    获取浏览记录数据
-        console.log(housesRecord);
+       (async()=>{const {count}=await favoriteCount()
+           setCount(count)
+       })()
+
     })
     return (
         <div className={styles.Profile}>
@@ -56,7 +61,7 @@ export default () =>{
             {/*数据显示*/}
             <div className={styles.dataCard}>
                 <div className={[styles.dataCardItem, styles.fc].join(' ')}>
-                    <div>{[].length}</div>
+                    <div>{count}</div>
                     <div>我的收藏</div>
                 </div>
                 <div className={classnames(styles.dataCardItem, styles.fc)}>

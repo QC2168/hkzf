@@ -8,6 +8,7 @@ import {updateUserStoreAtom} from '../../atom';
 import {useNavigate} from 'react-router-dom';
 import {object, string} from 'yup';
 import {Toast} from 'antd-mobile';
+import {SetToken} from "../../utils";
 // 规则
 const LoginRules = object({
     username: string().required(),
@@ -38,12 +39,13 @@ export default () => {
                         // 写入atom
                         const res = {username, token};
                         updateUserData(res);
+                        SetToken(token)
                         Toast.show({
                             content: '注册成功',
                             icon:'success',
                         })
                         // 注册成功
-                        navigate('/Login');
+                        navigate('/Profile');
 
                         setSubmitting(false);
                     }}

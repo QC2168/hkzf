@@ -26,12 +26,13 @@ export const addHousesRecordsAtom = atom(
 
 
 // 登录数据
-export const userStoreAtom = atom<UserStoreType>({username: '', token: ''});
+export const userStoreAtom = atom<UserStoreType>(JSON.parse(window.localStorage.getItem('userAtom')|| '')||{username: '', token: ''});
 export const updateUserStoreAtom = atom(
-    (get) => get(userStoreAtom),
+    (get) =>  get(userStoreAtom),
     (get, set, userStore:UserStoreType) => {
         // 将token放到本地存储
         SetToken(userStore.token)
+        addLocalStorage('userAtom',userStore)
         set(userStoreAtom, userStore)
     }
 );

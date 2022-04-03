@@ -6,7 +6,14 @@ import {
     NewsDataType,
     HousesListType,
     ConditionType,
-    HousesItemDetailType, HousesMapItemType, LoginType, TokenType, FavoritesType, HousesItemType, HousesItemReleaseType
+    HousesItemDetailType,
+    HousesMapItemType,
+    LoginType,
+    TokenType,
+    FavoritesType,
+    HousesItemType,
+    HousesItemReleaseType,
+    RecordCountType
 } from '../types';
 import {AxiosRequestConfig} from 'axios';
 import responseInterceptor from '../Interceptors/responseInterceptor';
@@ -163,6 +170,12 @@ export const favoritesHouses = () => {
         url: `/user/favorites`,
     })
 }
+// 获取收藏商品数量
+export const favoriteCount = () => {
+    return ApiInstance.request<{count:number}>({
+        url: `/user/favoritesCount`,
+    })
+}
 
 // 获取房屋查询数据
 export const housesParams=()=>{
@@ -193,5 +206,20 @@ return ApiInstance.request<unknown>({
     data:{
         title,description,houseImg,oriented,supporting,price,roomType,size,floor,community
     }
+})
+}
+
+// 请求收藏数量和浏览记录数量
+export const getHistory=()=>{
+    return ApiInstance.request<RecordCountType>({
+
+    })
+}
+
+// 请求个人信息
+export const getUserInfo=()=>{
+return ApiInstance.request<unknown>({
+    url:'/user',
+    method:'get',
 })
 }
